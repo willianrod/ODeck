@@ -17,6 +17,7 @@ https://user-images.githubusercontent.com/6539258/154787245-872187a9-b05e-44c4-b
 https://user-images.githubusercontent.com/6539258/154787603-3cf7bcd0-f82c-4092-96b9-28546fe16568.mp4
 
 ## Upcoming features
+- Internationalization (pt-BR and en-US first)
 - OBS Integration
 - Play sound
 - Keybind input
