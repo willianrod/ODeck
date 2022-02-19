@@ -3,7 +3,7 @@
 <div align="center">
   <h1>ODeck</h1>
   <p>
-    An free and open source alternative to Stream Deck.
+    A free and open source alternative to Stream Deck.
   </p>
 </div>
 <br>
