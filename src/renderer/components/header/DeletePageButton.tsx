@@ -48,7 +48,7 @@ const DeletePageButton = () => {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Are you shure you want to delete this page?
+              Are you sure you want to delete this page?
             </AlertDialogHeader>
 
             <AlertDialogBody>This action cannot be undone.</AlertDialogBody>
