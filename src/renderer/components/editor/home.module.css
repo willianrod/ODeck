@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.keypadContainer {
+  flex: 1;
+  background-color: #101117;
+}
+
+.keypad {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.bottomBar {
+  height: 40%;
+  width: 100%;
+  background-color: rgb(22, 22, 31);
+  padding: 1em;
+  overflow: auto;
+}
+
+.sidebar {
+  width: 300px;
+  min-width: 300px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.saveButton {
+  margin-left: 16px;
+}

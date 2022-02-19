@@ -1,0 +1,37 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  font-family: sans-serif;
+  overflow-y: hidden;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--chakra-colors-gray-400);
+}
+
+/**  STYLE 2 */
+::-webkit-scrollbar-thumb {
+  background-color: var(--chakra-colors-gray-600);
+}
+
+::-webkit-scrollbar-track {
+  padding: 2px;
+  background-color: var(--chakra-colors-gray-400);
+}
+
+.app {
+  background-color: #101117;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
