@@ -120,5 +120,7 @@ yarn package
 - [Willian Rodrigues](https://github.com/WillianRod)
 
 ## License
+Credits to [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) for making an awesome template for creating electron based React application.
 
-MIT © [Odeck](https://github.com/WillianRod/ODeck)
+
+MIT © [ODeck](https://github.com/WillianRod/ODeck)
