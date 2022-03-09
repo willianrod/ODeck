@@ -9,13 +9,16 @@ import {
   AlertDialogFooter,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdDelete } from 'react-icons/md';
 import { deletePage } from 'renderer/redux/ducks/pages';
 
 const DeletePageButton = () => {
+  const { t } = useTranslation('header');
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const dispatch = useDispatch();
   const cancelRef = useRef();
 
@@ -37,7 +40,7 @@ const DeletePageButton = () => {
         size="sm"
         onClick={onOpen}
       >
-        Delete Page
+        {t('delete_page')}
       </Button>
 
       <AlertDialog
@@ -48,17 +51,17 @@ const DeletePageButton = () => {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Are you sure you want to delete this page?
+              {t('dialog.delete_title')}
             </AlertDialogHeader>
 
-            <AlertDialogBody>This action cannot be undone.</AlertDialogBody>
+            <AlertDialogBody>{t('dialog.delete_description')}</AlertDialogBody>
 
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
-                Cancel
+                {t('dialog.cancel')}
               </Button>
               <Button colorScheme="red" onClick={handleDeletePage} ml={3}>
-                Delete
+                {t('dialog.delete')}
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>

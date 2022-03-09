@@ -1,0 +1,22 @@
+{
+  "delete_page": "Excluir Página",
+  "dialog": {
+    "delete_title": "Você tem certeza que quer excluir esta página?",
+    "delete_description": "Esta ação não pode ser desfeita.",
+    "add_title": "Adicionar Página",
+    "add_description": "Criar uma nova página",
+    "connect_title": "Conectar seu dispositivo:",
+    "connect_description": "Selecione o endereço IP do computador na sua rede local, depois abra o aplicativo e escaneie o QR Code com seu dispositivo",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "create": "Criar",
+    "close": "Fechar"
+  },
+  "label": {
+    "name": "Nome"
+  },
+  "select_ip_address": "Selecione um endereço IP",
+  "select_page": "Selecione uma Página",
+  "pair_deck": "Parear Deck",
+  "go_back": "Voltar"
+}

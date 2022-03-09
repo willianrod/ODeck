@@ -19,85 +19,85 @@ import {
 } from 'react-icons/md';
 import { IKeyType } from 'interfaces';
 import MediaKeys from 'server/enums/media-keys.enum';
+import i18n from 'renderer/i18n';
 
 const KEY_TYPES: Array<IKeyType> = [
   {
     key: 'DECK',
-    label: 'Deck',
+    label: i18n.t('keys:deck'),
     icon: MdOutlineCropLandscape,
     items: [
       {
         type: KeyTypes.NAVIGATE,
-        label: 'Navigate',
-        description: 'Navigate to another page',
+        label: i18n.t('keys:navigate.title'),
+        description: i18n.t('keys:navigate.description'),
         icon: MdNavigateNext,
         defaults: {
           color: '#fff',
-          label: 'Go to...',
+          label: i18n.t('keys:navigate.label'),
         },
       },
       {
         type: KeyTypes.GO_BACK,
-        label: 'Go back',
-        description: 'Return to previous page',
+        label: i18n.t('keys:go_back.title'),
+        description: i18n.t('keys:go_back.description'),
         icon: MdNavigateBefore,
         defaults: {
           color: '#fff',
-          label: 'Go Back',
+          label: i18n.t('keys:go_back.label'),
         },
       },
     ],
   },
   {
     key: 'SYSTEM',
-    label: 'System',
+    label: i18n.t('keys:system'),
     icon: MdSettings,
     items: [
       {
         type: KeyTypes.EXECUTABLE,
-        label: 'Run executable',
-        description: 'Open an app installed on your computer',
+        label: i18n.t('keys:executable.title'),
+        description: i18n.t('keys:executable.description'),
         icon: MdMonitor,
         defaults: {
           color: '#fff',
-          label: 'Open app',
+          label: i18n.t('keys:executable.label'),
         },
       },
       {
         type: KeyTypes.HOTKEY,
-        label: 'Hotkey',
-        description:
-          'Simulates a combination of keys to invoke a hotkey shortcut',
+        label: i18n.t('keys:hotkey.title'),
+        description: i18n.t('keys:hotkey.description'),
         icon: MdKeyboard,
         defaults: {
           color: '#fff',
-          label: 'Hotkey',
+          label: i18n.t('keys:hotkey.label'),
         },
       },
       {
         type: KeyTypes.URL,
-        label: 'Website',
-        description: 'Open an URL in your default browser',
+        label: i18n.t('keys:website.title'),
+        description: i18n.t('keys:website.description'),
         icon: MdLink,
         defaults: {
           color: '#fff',
-          label: 'Open link',
+          label: i18n.t('keys:website.label'),
         },
       },
     ],
   },
   {
     key: 'MEDIA',
-    label: 'Media',
+    label: i18n.t('keys:media'),
     icon: MdMusicNote,
     items: [
       {
         type: KeyTypes.PLAY,
-        label: 'Play',
+        label: i18n.t('keys:play'),
         icon: MdPlayArrow,
         defaults: {
           color: '#fff',
-          label: 'Play',
+          label: i18n.t('keys:play'),
           actionConfig: {
             mediaKey: MediaKeys.PLAY,
           },
@@ -105,11 +105,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.PAUSE,
-        label: 'Pause',
+        label: i18n.t('keys:pause'),
         icon: MdPause,
         defaults: {
           color: '#fff',
-          label: 'Pause',
+          label: i18n.t('keys:pause'),
           actionConfig: {
             mediaKey: MediaKeys.PAUSE,
           },
@@ -117,11 +117,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.NEXT,
-        label: 'Next',
+        label: i18n.t('keys:next'),
         icon: MdSkipNext,
         defaults: {
           color: '#fff',
-          label: 'Next',
+          label: i18n.t('keys:next'),
           actionConfig: {
             mediaKey: MediaKeys.NEXT,
           },
@@ -129,11 +129,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.PREVIOUS,
-        label: 'Previous',
+        label: i18n.t('keys:previous'),
         icon: MdSkipPrevious,
         defaults: {
           color: '#fff',
-          label: 'Previous',
+          label: i18n.t('keys:previous'),
           actionConfig: {
             mediaKey: MediaKeys.PREVIOUS,
           },
@@ -141,11 +141,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.STOP,
-        label: 'Stop',
+        label: i18n.t('keys:stop'),
         icon: MdStop,
         defaults: {
           color: '#fff',
-          label: 'Stop',
+          label: i18n.t('keys:stop'),
           actionConfig: {
             mediaKey: MediaKeys.STOP,
           },
@@ -153,11 +153,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.MUTE,
-        label: 'Mute',
+        label: i18n.t('keys:mute'),
         icon: MdVolumeOff,
         defaults: {
           color: '#fff',
-          label: 'Mute',
+          label: i18n.t('keys:mute'),
           actionConfig: {
             mediaKey: MediaKeys.MUTE,
           },
@@ -165,11 +165,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.VOL_DOWN,
-        label: 'Volume -',
+        label: i18n.t('keys:volume_minus'),
         icon: MdVolumeDown,
         defaults: {
           color: '#fff',
-          label: 'Volume -',
+          label: i18n.t('keys:volume_minus'),
           actionConfig: {
             mediaKey: MediaKeys.VOL_DOWN,
           },
@@ -177,11 +177,11 @@ const KEY_TYPES: Array<IKeyType> = [
       },
       {
         type: KeyTypes.VOL_UP,
-        label: 'Volume +',
+        label: i18n.t('keys:volume_plus'),
         icon: MdVolumeUp,
         defaults: {
           color: '#fff',
-          label: 'Volume +',
+          label: i18n.t('keys:volume_plus'),
           actionConfig: {
             mediaKey: MediaKeys.VOL_UP,
           },

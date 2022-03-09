@@ -1,0 +1,22 @@
+{
+  "delete_page": "Delete Page",
+  "dialog": {
+    "delete_title": "Are you sure you want to delete this page?",
+    "delete_description": "This action cannot be undone.",
+    "add_title": "Add Page",
+    "add_description": "Create a new page",
+    "connect_title": "Connect your device:",
+    "connect_description": "Select your local network IP address, then open the app and scan the QR Code below with your device.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "create": "Create",
+    "close": "Close"
+  },
+  "label": {
+    "name": "Name"
+  },
+  "select_ip_address": "Select an IP address",
+  "select_page": "Select a page",
+  "pair_deck": "Pair Deck",
+  "go_back": "Go Back"
+}

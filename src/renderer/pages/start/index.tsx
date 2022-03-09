@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { Box, Flex, Text, Center, Button, Heading } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { IDevice } from 'interfaces';
 import { useNavigate } from 'react-router-dom';
 import { selectDevice } from 'renderer/redux/ducks/devices';
@@ -8,6 +9,7 @@ import CreatePageButton from 'renderer/components/CreatePageButton';
 
 const Start = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const devices = useSelector((state: any) => state.devices.items);
   const dispatch = useDispatch();
@@ -49,7 +51,7 @@ const Start = () => {
               colorScheme="blue"
               onClick={() => handleSelectDevice(device)}
             >
-              Select
+              {t('select')}
             </Button>
           </Flex>
         </Flex>
@@ -64,8 +66,8 @@ const Start = () => {
         background="linear-gradient(265.97deg, #171923 0%, #18202E 28.18%, #1A2D38 43.12%, #1A3638 59.94%, #0E2829 79.05%, #171923 100.72%)"
       >
         <Box padding={8} textAlign="center">
-          <Heading>Welcome to</Heading>
-          <Heading>ODeck</Heading>
+          <Heading>{t('welcome_to')}</Heading>
+          <Heading>{t('app_name')}</Heading>
         </Box>
       </Center>
       <Flex flex={0.7} padding={4} flexDir="row" w="100%" gap={4}>
@@ -75,7 +77,7 @@ const Start = () => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Heading size="sm">Select a device:</Heading>
+            <Heading size="sm">{t('select_device')}</Heading>
             <CreatePageButton />
           </Flex>
           {devices.map(renderDevice)}

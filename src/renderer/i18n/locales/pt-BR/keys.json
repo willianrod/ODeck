@@ -1,0 +1,39 @@
+{
+  "deck": "Deck",
+  "navigate": {
+    "title": "Navegar",
+    "description": "Navegar para outra página",
+    "label": "Vá para..."
+  },
+  "go_back": {
+    "title": "Voltar",
+    "description": "Voltar para a página anterior",
+    "label": "Voltar"
+  },
+  "system": "Sistema",
+  "executable": {
+    "title": "Abrir executável",
+    "description": "Abrir um aplicativo instalado em seu computador",
+    "label": "Abrir aplicativo"
+  },
+  "hotkey": {
+    "title": "HotKey",
+    "description": "Simula uma combinações de teclas para invocar um atalho de teclado",
+    "label": "Hotkey"
+  },
+  "website": {
+    "title": "Website",
+    "description": "Abrir um URL no seu navegador padrão",
+    "label": "Abrir link"
+  },
+  "media": "Mídia",
+  "play": "Tocar",
+  "pause": "Pausar",
+  "next": "Próximo",
+  "previous": "Anterior",
+  "stop": "Parar",
+  "mute": "Silenciar",
+  "volume_plus": "Volume +",
+  "volume_minus": "Volume -"
+}
+

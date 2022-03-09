@@ -13,12 +13,14 @@ import {
   ModalFooter,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MdQrCode2 } from 'react-icons/md';
 import QRCode from 'react-qr-code';
 
 const PairDeckButton = () => {
+  const { t } = useTranslation('header');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [selectedIp, setSelectedIp] = useState<string>('');
@@ -48,21 +50,20 @@ const PairDeckButton = () => {
   return (
     <>
       <Button leftIcon={<Icon as={MdQrCode2} />} size="sm" onClick={onOpen}>
-        Pair Deck
+        {t('pair_deck')}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Connect your device:</ModalHeader>
+          <ModalHeader>{t('dialog.connect_title')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text color="gray.500" mb={4}>
-              Select your local network IP address, then open the app and scan
-              the QR Code below with your device.
+              {t('dialog.connect_description')}
             </Text>
             <Select
-              placeholder="Select an IP address"
+              placeholder={t('select_ip_address')}
               value={selectedIp}
               size="sm"
               mb={5}
@@ -87,7 +88,7 @@ const PairDeckButton = () => {
 
           <ModalFooter>
             <Button mr={3} onClick={onClose} variant="outline">
-              Fechar
+              {t('dialog.close')}
             </Button>
           </ModalFooter>
         </ModalContent>

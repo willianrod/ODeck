@@ -1,0 +1,22 @@
+{
+  "label": {
+    "path": "Path",
+    "bindings": "Bindings",
+    "url": "URL",
+    "page": "Page",
+    "label": "Label",
+    "background_color": "Background Color",
+    "background_url": "Background URL",
+    "text_color": "Text Color",
+    "hide_label": "Hide Label",
+    "remove": "Remove",
+    "save": "Save"
+  },
+  "hint": {
+    "url": "Place here the URL you want to open when the button is pressed"
+  },
+  "empty": {
+    "title": "No Action Key Selected",
+    "description": "Drag an action key from the sidebar and drop into any available key to start editing."
+  }
+}

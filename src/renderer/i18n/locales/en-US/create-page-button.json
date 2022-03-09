@@ -1,0 +1,11 @@
+{
+  "create_device": "Create Device",
+  "create_new_device": "Create a new device",
+  "label": {
+    "name": "Name",
+    "amount_vertically": "Amount of keys vertically",
+    "amount_horizontally": "Amount of keys horizontally"
+  },
+  "cancel": "Cancel",
+  "create": "Create"
+}
