@@ -10,6 +10,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -20,6 +21,7 @@ import TextInput from '../Form/TextInput';
 
 const CreatePageButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { t } = useTranslation('create-page-button');
 
   const dispatch = useDispatch();
 
@@ -39,19 +41,19 @@ const CreatePageButton = () => {
   return (
     <>
       <Button leftIcon={<Icon as={MdAdd} />} size="sm" onClick={onOpen}>
-        Create Device
+        {t('create_device')}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create a new device</ModalHeader>
+          <ModalHeader>{t('create_new_device')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Form form={form} onSubmit={handleCreateDevice}>
               <TextInput
                 name="name"
-                label="Name"
+                label={t('label.name')}
                 defaultValue=""
                 maxLength={100}
                 size="md"
@@ -59,14 +61,14 @@ const CreatePageButton = () => {
               <TextInput
                 type="number"
                 name="amountVertical"
-                label="Amount of keys vertically"
+                label={t('label.amount_vertically')}
                 defaultValue="4"
                 size="md"
               />
               <TextInput
                 type="number"
                 name="amountHorizontal"
-                label="Amount of keys horizontally"
+                label={t('label.amount_horizontally')}
                 defaultValue="8"
                 size="md"
               />
@@ -75,13 +77,13 @@ const CreatePageButton = () => {
 
           <ModalFooter>
             <Button mr={3} onClick={onClose} variant="outline">
-              Cancel
+              {t('cancel')}
             </Button>
             <Button
               variant="solid"
               onClick={form.handleSubmit(handleCreateDevice)}
             >
-              Create
+              {t('create')}
             </Button>
           </ModalFooter>
         </ModalContent>

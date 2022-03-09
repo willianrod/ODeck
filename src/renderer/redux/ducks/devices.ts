@@ -39,6 +39,7 @@ export const setCurrentDevice = (device: IDevice) => {
 // Thunks
 export const selectDevice = ({ device, deviceType }: any) => {
   return (dispatch: any, _getState: any, socket: Socket) => {
+    if (!device?.id) return;
     dispatch(setCurrentDevice(device));
     socket.emit(EventTypes.DEVICES.SELECT, {
       deviceId: device.id,

@@ -1,0 +1,22 @@
+{
+  "label": {
+    "path": "Caminho",
+    "bindings": "Bindings",
+    "url": "URL",
+    "page": "Página",
+    "label": "Rótulo",
+    "background_color": "Cor de fundo",
+    "background_url": "URL da imagem de fundo",
+    "text_color": "Cor do Texto",
+    "hide_label": "Esconder Rótulo",
+    "remove": "Remover",
+    "save": "Salvar"
+  },
+  "hint": {
+    "url": "Coloque aqui o URL que você quer que seja aberto quando pressionar o botão"
+  },
+  "empty": {
+    "title": "Nenhuma tecla selecionada",
+    "description": "Arraste uma tecla de ação do menu lateral em uma tecla disponível para começar."
+  }
+}

@@ -11,6 +11,7 @@ const initialState = {
 const Types = {
   SET_KEYS: 'DECK/KEYS/SET_KEYS',
   SET_CURRENT_KEY: 'DECK/KEYS/SET_CURRENT_KEY',
+  CLEAR_CURRENT_KEY: 'DECK/KEYS/CLEAR_CURRENT_KEY',
 };
 
 // Reducer
@@ -21,6 +22,9 @@ const reducer = (state = initialState, action: any) => {
     }
     case Types.SET_CURRENT_KEY: {
       return { ...state, currentKey: action.currentKey };
+    }
+    case Types.CLEAR_CURRENT_KEY: {
+      return { ...state, currentKey: null };
     }
     default:
       return state;
@@ -34,6 +38,10 @@ export const setKeys = (keys: Array<IButtonKey>) => {
 
 export const setCurrentKey = (currentKey: IButtonKey) => {
   return { type: Types.SET_CURRENT_KEY, currentKey };
+};
+
+export const clearCurrentKey = () => {
+  return { type: Types.CLEAR_CURRENT_KEY };
 };
 
 // Thunks
@@ -52,8 +60,9 @@ export const updateKey = (updatedButton: IButtonKey) => {
 };
 
 export const deleteKey = (currentKey: IButtonKey) => {
-  return (_dispatch: any, _getState: any, socket: Socket) => {
-    socket.emit('DELETE_KEY', currentKey);
+  return (dispatch: any, _getState: any, socket: Socket) => {
+    socket.emit(EventTypes.KEYS.DELETE, currentKey);
+    dispatch(clearCurrentKey());
   };
 };
 

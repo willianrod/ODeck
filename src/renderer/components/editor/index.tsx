@@ -9,6 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import Form from 'renderer/components/Form';
 import CheckboxInput from 'renderer/components/Form/CheckboxInput';
@@ -22,6 +23,8 @@ import SelectInput from '../Form/SelectInput';
 import ColorInput from '../Form/ColorInput';
 
 const Editor = () => {
+  const { t } = useTranslation('editor');
+
   const { currentKey, pages } = useSelector((state: any) => ({
     currentKey: state.keys.currentKey,
     pages: state.pages.items,
@@ -64,7 +67,7 @@ const Editor = () => {
         return (
           <TextInput
             name="exePath"
-            label="Path"
+            label={t('label.path')}
             defaultValue=""
             maxLength={200}
             size="md"
@@ -74,7 +77,7 @@ const Editor = () => {
         return (
           <TextInput
             name="bindings"
-            label="Bindings"
+            label={t('label.bindings')}
             defaultValue=""
             maxLength={200}
             size="md"
@@ -86,10 +89,10 @@ const Editor = () => {
           <TextInput
             size="md"
             name="url"
-            label="URL"
+            label={t('label.url')}
             defaultValue=""
             maxLength={200}
-            hint="Place here the URL you want to open when the button is pressed"
+            hint={t('hint.url')}
           />
         );
 
@@ -97,7 +100,7 @@ const Editor = () => {
         return (
           <SelectInput
             name="destinationPageId"
-            label="Page"
+            label={t('label.page')}
             options={pages?.map((p: IPage) => ({ key: p.id, label: p.name }))}
           />
         );
@@ -114,7 +117,7 @@ const Editor = () => {
           <GridItem colSpan={1}>
             <TextInput
               name="label"
-              label="Label"
+              label={t('label.label')}
               defaultValue=""
               maxLength={100}
               size="md"
@@ -123,7 +126,7 @@ const Editor = () => {
           <GridItem colSpan={1}>
             <ColorInput
               name="backgroundColor"
-              label="Background Color"
+              label={t('label.background_color')}
               defaultValue="#fff"
               size="md"
             />
@@ -131,7 +134,7 @@ const Editor = () => {
           <GridItem colSpan={1}>
             <TextInput
               name="backgroundUrl"
-              label="Background URL"
+              label={t('label.background_url')}
               defaultValue=""
               maxLength={1000}
               size="md"
@@ -140,13 +143,13 @@ const Editor = () => {
           <GridItem colSpan={1}>
             <ColorInput
               name="color"
-              label="Text Color"
+              label={t('label.text_color')}
               defaultValue=""
               size="md"
             />
           </GridItem>
           <GridItem colSpan={1}>
-            <CheckboxInput name="hideLabel" label="Hide Label" />
+            <CheckboxInput name="hideLabel" label={t('label.hide_label')} />
           </GridItem>
         </Grid>
 
@@ -154,14 +157,14 @@ const Editor = () => {
 
         <div className={styles.buttons}>
           <Button onClick={handleDeleteKey} color="red.500">
-            Remove
+            {t('label.remove')}
           </Button>
           <Button
             className={styles.saveButton}
             colorScheme="teal"
             type="submit"
           >
-            Save
+            {t('label.save')}
           </Button>
         </div>
       </Form>
@@ -194,11 +197,10 @@ const Editor = () => {
             </Flex>
           </Flex>
           <Heading as="h4" size="md" mb={2} textAlign="left">
-            No Action Key Selected
+            {t('empty.title')}
           </Heading>
           <Text fontSize="lg" color="gray.500">
-            Drag an action key from the sidebar and drop into any available key
-            to start editing.
+            {t('empty.description')}
           </Text>
         </Box>
       </Flex>

@@ -1,0 +1,39 @@
+{
+  "deck": "Deck",
+  "navigate": {
+    "title": "Navigate",
+    "description": "Navigate to another page",
+    "label": "Go to..."
+  },
+  "go_back": {
+    "title": "Go back",
+    "description": "Return to previous page",
+    "label": "Go Back"
+  },
+  "system": "System",
+  "executable": {
+    "title": "Run executable",
+    "description": "Open an app installed on your computer",
+    "label": "Open app"
+  },
+  "hotkey": {
+    "title": "HotKey",
+    "description": "Simulates a combination of keys to invoke a hotkey shortcut",
+    "label": "Hotkey"
+  },
+  "website": {
+    "title": "Website",
+    "description": "Open an URL in your default browser",
+    "label": "Open link"
+  },
+  "media": "Media",
+  "play": "Play",
+  "pause": "Pause",
+  "next": "Next",
+  "previous": "Previous",
+  "stop": "Stop",
+  "mute": "Mute",
+  "volume_plus": "Volume +",
+  "volume_minus": "Volume -"
+}
+

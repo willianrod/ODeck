@@ -1,5 +1,6 @@
 import { Icon, Flex, Spacer, Button } from '@chakra-ui/react';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MdNavigateBefore } from 'react-icons/md';
 import { useNavigate } from 'react-router';
 
@@ -7,6 +8,7 @@ import PageSelector from './PageSelector';
 import PairDeckButton from './PairDeckButton';
 
 const Header = () => {
+  const { t } = useTranslation('header');
   const navigate = useNavigate();
 
   const goBack = useCallback(() => {
@@ -20,7 +22,7 @@ const Header = () => {
         size="sm"
         onClick={goBack}
       >
-        Go Back
+        {t('go_back')}
       </Button>
       <PairDeckButton />
       <Spacer flex={1} />

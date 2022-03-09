@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useCallback, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { MdAdd } from 'react-icons/md';
 import { IPage } from 'interfaces';
@@ -24,6 +25,7 @@ import Form from '../Form';
 import DeletePageButton from './DeletePageButton';
 
 const PageSelector = () => {
+  const { t } = useTranslation('header');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const dispatch = useDispatch();
@@ -67,7 +69,7 @@ const PageSelector = () => {
     <>
       <Box width={160}>
         <Select
-          placeholder="Select a page"
+          placeholder={t('select_page')}
           value={currentPage?.id}
           size="sm"
           onChange={handleChangePage}
@@ -81,19 +83,19 @@ const PageSelector = () => {
       </Box>
       <DeletePageButton />
       <Button leftIcon={<Icon as={MdAdd} />} size="sm" onClick={onOpen}>
-        Add Page
+        {t('dialog.add_title')}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create a new page</ModalHeader>
+          <ModalHeader>{t('dialog.add_description')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Form form={form} onSubmit={handleAddNewPage}>
               <TextInput
                 name="name"
-                label="Name"
+                label={t('label.name')}
                 defaultValue=""
                 maxLength={100}
                 size="md"
@@ -103,13 +105,13 @@ const PageSelector = () => {
 
           <ModalFooter>
             <Button mr={3} onClick={onClose} variant="outline">
-              Cancel
+              {t('dialog.cancel')}
             </Button>
             <Button
               variant="solid"
               onClick={form.handleSubmit(handleAddNewPage)}
             >
-              Create
+              {t('dialog.create')}
             </Button>
           </ModalFooter>
         </ModalContent>
