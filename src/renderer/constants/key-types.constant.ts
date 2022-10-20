@@ -84,6 +84,16 @@ const KEY_TYPES: Array<IKeyType> = [
           label: i18n.t('keys:website.label'),
         },
       },
+      {
+        type: KeyTypes.SOUND,
+        label: i18n.t('keys:play_sound.label'),
+        description: i18n.t('keys:play_sound.description'),
+        icon: MdPlayArrow,
+        defaults: {
+          color: '#fff',
+          label: i18n.t('keys:play_sound.label'),
+        },
+      },
     ],
   },
   {

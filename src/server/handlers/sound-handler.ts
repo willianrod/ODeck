@@ -1,12 +1,10 @@
 import { IButtonKey } from 'interfaces';
-import playSound from 'play-sound';
-
-const player = playSound({});
+import sound from 'sound-play';
 
 export const soundHandler = (keyPressed: IButtonKey) => {
   if (!keyPressed.actionConfig.soundPath) return;
 
-  player.play(keyPressed.actionConfig.soundPath);
+  sound.play(keyPressed.actionConfig.soundPath);
 };
 
 export default null;

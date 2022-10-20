@@ -26,6 +26,11 @@
     "description": "Abrir um URL no seu navegador padrão",
     "label": "Abrir link"
   },
+  "play_sound": {
+    "title": "Reproduzir som",
+    "label": "Reproduzir som",
+    "description": "Permite reproduzir um arquivo .mp3 ou .wav toda vez que pressionado."
+  },
   "media": "Mídia",
   "play": "Tocar",
   "pause": "Pausar",
