@@ -21,6 +21,7 @@ import { MdDragIndicator } from 'react-icons/md';
 import styles from './home.module.css';
 import SelectInput from '../Form/SelectInput';
 import ColorInput from '../Form/ColorInput';
+import InputBindings from '../Form/InputBindings';
 
 const Editor = () => {
   const { t } = useTranslation('editor');
@@ -75,7 +76,7 @@ const Editor = () => {
         );
       case KeyTypes.HOTKEY:
         return (
-          <TextInput
+          <InputBindings
             name="bindings"
             label={t('label.bindings')}
             defaultValue=""

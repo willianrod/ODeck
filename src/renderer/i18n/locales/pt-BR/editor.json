@@ -18,5 +18,9 @@
   "empty": {
     "title": "Nenhuma tecla selecionada",
     "description": "Arraste uma tecla de ação do menu lateral em uma tecla disponível para começar."
+  },
+  "bindings": {
+    "start_recording": "Começar a gravar",
+    "stop_recording": "Parar de gravar"
   }
 }

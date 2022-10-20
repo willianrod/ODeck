@@ -57,7 +57,7 @@ const startServer = () => {
 
   server.listen(3000, () => {
     // eslint-disable-next-line no-console
-    console.log('Server listening on port 3000');
+    console.log('ODeck running on port 3000');
   });
 };
 
