@@ -1,0 +1,12 @@
+.inputContainer {
+  position: relative;
+
+  :global {
+    .chakra-button {
+      position: absolute;
+      right: 4px;
+      z-index: 9999;
+      top: 4px;
+    }
+  }
+}

@@ -6,13 +6,16 @@ import {
   FormHelperText,
   FormErrorMessage,
   FormLabel,
+  Button,
 } from '@chakra-ui/react';
+import useRecordKeybindings from 'hooks/useRecordKeybindings';
 
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
-import styles from './TextInput.module.scss';
+import { useTranslation } from 'react-i18next';
+import styles from './InputBindings.module.scss';
 
-export interface TextInputProps extends InputProps {
+export interface InputBindingsProps extends InputProps {
   name: string;
   label: string;
   required?: boolean;
@@ -20,7 +23,7 @@ export interface TextInputProps extends InputProps {
   hint?: string;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
+const InputBindings: React.FC<InputBindingsProps> = ({
   label,
   defaultValue,
   name,
@@ -31,7 +34,19 @@ const TextInput: React.FC<TextInputProps> = ({
   hint,
   ...rest
 }) => {
-  const { register, formState } = useFormContext();
+  const { register, formState, setValue } = useFormContext();
+  const { t } = useTranslation('editor');
+
+  const handleEnd = useCallback(
+    (keys: string[]) => {
+      setValue(name, keys.join(','));
+    },
+    [setValue, name]
+  );
+
+  const { startRecording, stopRecording, isRecording } = useRecordKeybindings({
+    onEnd: handleEnd,
+  });
 
   const error = useMemo(
     () => formState.errors[name]?.message,
@@ -55,10 +70,18 @@ const TextInput: React.FC<TextInputProps> = ({
             defaultValue={defaultValue}
             data-testid={name}
             isInvalid={formState.errors[name]}
-            isDisabled={disabled}
+            isDisabled
             {...rest}
             {...register(name, { required, disabled, maxLength })}
           />
+          <Button
+            size="sm"
+            onClick={isRecording ? stopRecording : startRecording}
+          >
+            {isRecording
+              ? t('bindings.stop_recording')
+              : t('bindings.start_recording')}
+          </Button>
         </InputGroup>
       </div>
       {error && <FormErrorMessage>{error}</FormErrorMessage>}
@@ -66,4 +89,4 @@ const TextInput: React.FC<TextInputProps> = ({
   );
 };
 
-export default TextInput;
+export default InputBindings;

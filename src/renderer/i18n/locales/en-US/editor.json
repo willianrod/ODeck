@@ -18,5 +18,9 @@
   "empty": {
     "title": "No Action Key Selected",
     "description": "Drag an action key from the sidebar and drop into any available key to start editing."
+  },
+  "bindings": {
+    "start_recording": "Start recording",
+    "stop_recording": "Stop recording"
   }
 }

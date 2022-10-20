@@ -1,4 +1,3 @@
-
 ![image](https://user-images.githubusercontent.com/6539258/154814361-066e5010-40a8-4820-a706-ed9803a319a1.png)
 
 <div align="center">
@@ -7,20 +6,24 @@
   
 # For Users
 
-ODeck is an free and open source alternative to StreamDeck made with React, React Native, Electron, Socket.IO and some other tecnologies. It allows you to easilly control some features of your computer with the power of a tap on your smartphone.
+ODeck is a free and open source alternative to StreamDeck made with React, React Native, Electron, Socket.IO and some other tecnologies. It allows you to easily control some features of your computer with the power of a tap on your smartphone.
 
-It tends to be a cheaper sollution for StreamDeck because you can use your current smartphone or clean the dust from an older device from the bottom of your drawer and give another pourpose of life to this device.
+It tends to be a cheaper alternative to StreamDeck because you can use your current smartphone or clean the dust from an older device from the bottom of your drawer and give another pourpose of life to this device.
 
 ## Suported OS
+
 Currently ODeck is not yet supported on all platforms, but it should be in the near future. See the listing of the current OS suported.
 
 ### Deck
+
 - Android
 
 ### Admin Dashboard
+
 - Windows
 
 ## Current Features
+
 - Open an URL
 - Emit a combination of keys to invoke hotkeys
 - Run an EXE file
@@ -30,21 +33,22 @@ Currently ODeck is not yet supported on all platforms, but it should be in the n
 - Pair app with QR Code
 
 ## Upcoming features
-- Internationalization (pt-BR and en-US first)
+
 - OBS integration
 - Play sound
-- Keybind input
 - Image upload input
 - File picker input
 - Prevent broken layout with custom key amount
 - Twitch integration
 - Add Linux and mac support for Admin Dashboard
-- Add iOS support for the ODeck App 
+- Add iOS support for the ODeck App
 
 ### Deck preview
+
 https://user-images.githubusercontent.com/6539258/154787245-872187a9-b05e-44c4-b162-42037ace352a.mp4
 
 ### Admin dashboard preview
+
 https://user-images.githubusercontent.com/6539258/154787603-3cf7bcd0-f82c-4092-96b9-28546fe16568.mp4
 
 ## Docs
@@ -52,18 +56,23 @@ https://user-images.githubusercontent.com/6539258/154787603-3cf7bcd0-f82c-4092-9
 ### Deck
 
 #### Navigate
+
 This action allows you to navigate between the deck pages
 
 #### Go Back
+
 This action allows you to go to the previows page shown
 
 ### System
+
 #### Run executable
+
 This action when pressed, opens an especified EXE file. To use it, you must put the complete path of the desired .exe file direct into the "Path" input. (In the near future there will be a button where you will navigate to find your desired file)
 
 ![image](https://user-images.githubusercontent.com/6539258/154814786-f08d6a64-04b2-4bfc-833f-6d68076fdf55.png)
 
 #### Hotkey
+
 With this action you will be able to invoke any hotkeys in your machine. It simulate the press of multiple keys in your machine, just like a normal keyboard but with just on touch of your finger.
 
 By now you need to check this documentation here to see all available keys you can use (http://robotjs.io/docs/syntax#keyboard). The most common keys is listed bellow.
@@ -85,6 +94,7 @@ For example, if you want to simulate the press of this combination of keys (CTRL
 Obs: In the near future will be an input to record all keys your key pressed and use this recored keys as value.
 
 ### Media
+
 This sections is self explanatory. When pressed, it will invoke the button action.
 
 # For Contributors
@@ -120,7 +130,7 @@ yarn package
 - [Willian Rodrigues](https://github.com/WillianRod)
 
 ## License
-Credits to [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) for making an awesome template for creating electron based React application.
 
+Credits to [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) for making an awesome template for creating electron based React application.
 
 MIT © [ODeck](https://github.com/WillianRod/ODeck)
