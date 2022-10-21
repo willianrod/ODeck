@@ -155,10 +155,10 @@
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.3",
     "@types/node": "17.0.5",
-    "@types/play-sound": "^1.1.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/react-test-renderer": "^17.0.1",
+    "@types/sound-play": "^1.1.0",
     "@types/terser-webpack-plugin": "^5.0.4",
     "@types/uuid": "^8.3.4",
     "@types/webpack-env": "^1.16.3",
@@ -244,7 +244,8 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "regenerator-runtime": "^0.13.9",
-    "socket.io-client": "^4.4.1"
+    "socket.io-client": "^4.4.1",
+    "sound-play": "^1.1.0"
   },
   "devEngines": {
     "node": ">=14.x",

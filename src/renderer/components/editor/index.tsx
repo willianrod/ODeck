@@ -49,6 +49,7 @@ const Editor = () => {
             bindings: values.bindings?.split(','),
             url: values.url,
             pageId: values.destinationPageId,
+            soundPath: values.soundPath,
           },
         })
       );
@@ -84,7 +85,16 @@ const Editor = () => {
             size="md"
           />
         );
-
+      case KeyTypes.SOUND:
+        return (
+          <TextInput
+            name="soundPath"
+            label={t('label.play_sound')}
+            defaultValue=""
+            maxLength={200}
+            size="md"
+          />
+        );
       case KeyTypes.URL:
         return (
           <TextInput
@@ -212,6 +222,7 @@ const Editor = () => {
     const exePath = currentKey?.actionConfig?.exePath || '';
     const bindings = currentKey?.actionConfig?.bindings?.join(',') || '';
     const url = currentKey?.actionConfig?.url || '';
+    const soundPath = currentKey?.actionConfig?.soundPath || '';
     form.reset({
       destinationPageId: currentKey?.actionConfig?.pageId || '',
       label: currentKey?.label || '',
@@ -222,6 +233,7 @@ const Editor = () => {
       exePath,
       bindings,
       url,
+      soundPath,
     });
   }, [form, currentKey]);
 

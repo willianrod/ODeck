@@ -26,6 +26,11 @@
     "description": "Open an URL in your default browser",
     "label": "Open link"
   },
+  "play_sound": {
+    "title": "Play sound",
+    "label": "Play sound",
+    "description": "Allows to play a .mp3 or .wav file everytime the button is pressed."
+  },
   "media": "Media",
   "play": "Play",
   "pause": "Pause",

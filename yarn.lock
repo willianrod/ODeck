@@ -1782,13 +1782,6 @@
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/play-sound@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@types/play-sound/-/play-sound-1.1.0.tgz"
-  integrity sha512-v+ggBleNpLah+RDTuyFsYjBGnAwULcJD2mjdP/X4ICsu3HPcOmCktZnfgwQ9UECS+01d5MCm1+YYip2R/iIX0g==
-  dependencies:
-    "@types/node" "*"
-
 "@types/plist@^3.0.1":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@types/plist/-/plist-3.0.2.tgz#61b3727bba0f5c462fe333542534a0c3e19ccb01"
@@ -1891,6 +1884,13 @@
   version "0.3.33"
   resolved "https://registry.npmjs.org/@types/sockjs/-/sockjs-0.3.33.tgz"
   integrity sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==
+  dependencies:
+    "@types/node" "*"
+
+"@types/sound-play@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/sound-play/-/sound-play-1.1.0.tgz#5e8a8354c92492b40a477c747ac6059d9e251768"
+  integrity sha512-r9BuZ7T8KmS3qxW52hg3LoFX8kl+jUPZilI2QawmjnNEjbHLDYrGOX1HOguF5BRI8ECM0OSXONl13UwT0XkPgw==
   dependencies:
     "@types/node" "*"
 
@@ -9210,6 +9210,11 @@ socks@^2.6.1:
   dependencies:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
+
+sound-play@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/sound-play/-/sound-play-1.1.0.tgz#58ffa31d1bf51822d49d91ff7865591fd9376381"
+  integrity sha512-Bd/L0AoCwITFeOnpNLMsfPXrV5GG5NhrC/T6odveahYbhPZkdTnrFXRia9FCC5WBWdUTw1d+yvLBvi4wnD1xOA==
 
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^0.6.2:
   version "0.6.2"

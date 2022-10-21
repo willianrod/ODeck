@@ -4,6 +4,7 @@
     "bindings": "Bindings",
     "url": "URL",
     "page": "Página",
+    "play_sound": "Reproduzir som",
     "label": "Rótulo",
     "background_color": "Cor de fundo",
     "background_url": "URL da imagem de fundo",

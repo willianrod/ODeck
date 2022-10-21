@@ -10,7 +10,7 @@ import MediaKeys from '../enums/media-keys.enum';
 import { hotkeyHandler } from '../handlers/hotkey-handler';
 import { urlHandler } from '../handlers/url-handler';
 import { executableHandler } from '../handlers/executable-handler';
-// import { soundHandler } from '../handlers/sound-handler';
+import { soundHandler } from '../handlers/sound-handler';
 import { mediaHandler } from '../handlers/media-handler';
 import { goBack, navigate } from '../handlers/navigate-handler';
 
@@ -20,7 +20,7 @@ const HANDLERS = {
   [KeyTypes.HOTKEY]: hotkeyHandler,
   [KeyTypes.URL]: urlHandler,
   [KeyTypes.EXECUTABLE]: executableHandler,
-  // [KeyTypes.SOUND]: soundHandler,
+  [KeyTypes.SOUND]: soundHandler,
   [KeyTypes.PLAY]: () => mediaHandler(MediaKeys.PLAY),
   [KeyTypes.STOP]: () => mediaHandler(MediaKeys.STOP),
   [KeyTypes.PREVIOUS]: () => mediaHandler(MediaKeys.PREVIOUS),

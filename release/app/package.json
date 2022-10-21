@@ -15,19 +15,18 @@
     "rebuild": "npm rebuild --runtime=electron --target=16.0.5 --disturl=https://atom.io/download/atom-shell --abi=99"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.2",
-    "node-abi": "^3.8.0",
-    "open": "^8.4.0",
-    "play-sound": "^1.1.5",
-    "robotjs": "^0.6.0",
-    "socket.io": "^4.4.1",
-    "uuid": "^8.3.2"
+    "cors": "2.8.5",
+    "express": "4.17.2",
+    "node-abi": "3.8.0",
+    "open": "8.4.0",
+    "@jitsi/robotjs": "0.6.11",
+    "socket.io": "4.4.1",
+    "uuid": "8.3.2"
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/play-sound": "^1.1.0",
-    "@types/uuid": "^8.3.4",
-    "@types/cors": "^2.8.12"
+    "@types/sound-play": "1.1.0",
+    "@types/uuid": "8.3.4",
+    "@types/cors": "2.8.12"
   }
 }

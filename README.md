@@ -29,13 +29,13 @@ Currently ODeck is not yet supported on all platforms, but it should be in the n
 - Run an EXE file
 - Media keys to interact with media playing on your system
 - Create multiple pages
+- Play any sound when pressing a button
 - Navigate between pages
 - Pair app with QR Code
 
 ## Upcoming features
 
 - OBS integration
-- Play sound
 - Image upload input
 - File picker input
 - Prevent broken layout with custom key amount

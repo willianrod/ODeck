@@ -1,4 +1,4 @@
-import robot from 'robotjs';
+import robot from '@jitsi/robotjs';
 import parseKeys from '../helpers/parseKeys';
 import { IButtonKey } from '../../interfaces';
 
