@@ -37,7 +37,6 @@ Currently ODeck is not yet supported on all platforms, but it should be in the n
 
 - OBS integration
 - Image upload input
-- File picker input
 - Prevent broken layout with custom key amount
 - Twitch integration
 - Add Linux and mac support for Admin Dashboard

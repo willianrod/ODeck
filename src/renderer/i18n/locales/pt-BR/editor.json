@@ -23,5 +23,8 @@
   "bindings": {
     "start_recording": "Começar a gravar",
     "stop_recording": "Parar de gravar"
+  },
+  "file_picker": {
+    "label": "Escolher arquivo"
   }
 }
