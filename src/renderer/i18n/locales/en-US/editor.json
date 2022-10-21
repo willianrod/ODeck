@@ -22,5 +22,8 @@
   "bindings": {
     "start_recording": "Start recording",
     "stop_recording": "Stop recording"
+  },
+  "file_picker": {
+    "label": "Choose file"
   }
 }

@@ -22,6 +22,7 @@ import styles from './home.module.css';
 import SelectInput from '../Form/SelectInput';
 import ColorInput from '../Form/ColorInput';
 import InputBindings from '../Form/InputBindings';
+import FileInput from '../Form/FileInput';
 
 const Editor = () => {
   const { t } = useTranslation('editor');
@@ -67,11 +68,12 @@ const Editor = () => {
     switch (currentKey.type) {
       case KeyTypes.EXECUTABLE:
         return (
-          <TextInput
+          <FileInput
             name="exePath"
             label={t('label.path')}
             defaultValue=""
             maxLength={200}
+            accept=".exe"
             size="md"
           />
         );
@@ -87,11 +89,12 @@ const Editor = () => {
         );
       case KeyTypes.SOUND:
         return (
-          <TextInput
+          <FileInput
             name="soundPath"
             label={t('label.play_sound')}
             defaultValue=""
             maxLength={200}
+            accept=".mp3,.wav"
             size="md"
           />
         );
