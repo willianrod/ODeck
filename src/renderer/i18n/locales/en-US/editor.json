@@ -4,6 +4,7 @@
     "bindings": "Bindings",
     "url": "URL",
     "page": "Page",
+    "play_sound": "Play sound",
     "label": "Label",
     "background_color": "Background Color",
     "background_url": "Background URL",
