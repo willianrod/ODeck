@@ -62,6 +62,7 @@ const Start = () => {
   return (
     <Flex flexDir="column" w="100vw" h="100vh">
       <Center
+        height="150px"
         flex={0.3}
         background="linear-gradient(265.97deg, #171923 0%, #18202E 28.18%, #1A2D38 43.12%, #1A3638 59.94%, #0E2829 79.05%, #171923 100.72%)"
       >
@@ -70,8 +71,21 @@ const Start = () => {
           <Heading>{t('app_name')}</Heading>
         </Box>
       </Center>
-      <Flex flex={0.7} padding={4} flexDir="row" w="100%" gap={4}>
-        <Box flex={0.8} bgColor="gray.900" borderRadius={8} p={4}>
+      <Flex
+        height="calc(100% - 150px)"
+        flex={0.7}
+        padding={4}
+        flexDir="row"
+        w="100%"
+        gap={4}
+      >
+        <Box
+          overflow="auto"
+          flex={0.8}
+          bgColor="gray.900"
+          borderRadius={8}
+          p={4}
+        >
           <Flex
             flexDir="row"
             alignItems="center"
