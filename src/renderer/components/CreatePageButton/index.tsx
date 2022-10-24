@@ -30,12 +30,17 @@ const CreatePageButton = () => {
     defaultValues: {},
   });
 
+  const handleClose = useCallback(() => {
+    form.reset();
+    onClose();
+  }, [form, onClose]);
+
   const handleCreateDevice = useCallback(
     (values) => {
       dispatch(createDevice(values));
-      onClose();
+      handleClose();
     },
-    [dispatch, onClose]
+    [dispatch, handleClose]
   );
 
   return (
@@ -44,7 +49,7 @@ const CreatePageButton = () => {
         {t('create_device')}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('create_new_device')}</ModalHeader>
@@ -76,7 +81,7 @@ const CreatePageButton = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button mr={3} onClick={onClose} variant="outline">
+            <Button mr={3} onClick={handleClose} variant="outline">
               {t('cancel')}
             </Button>
             <Button

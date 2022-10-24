@@ -40,6 +40,11 @@ const PageSelector = () => {
     defaultValues: {},
   });
 
+  const handleClose = useCallback(() => {
+    form.reset();
+    onClose();
+  }, [form, onClose]);
+
   const handleAddNewPage = useCallback(
     (values) => {
       const newPage = {
@@ -48,9 +53,9 @@ const PageSelector = () => {
       };
 
       dispatch(createPage(newPage));
-      onClose();
+      handleClose();
     },
-    [currentDevice, dispatch, onClose]
+    [currentDevice, dispatch, handleClose]
   );
 
   const handleChangePage = useCallback(
@@ -86,7 +91,7 @@ const PageSelector = () => {
         {t('dialog.add_title')}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('dialog.add_description')}</ModalHeader>
@@ -104,7 +109,7 @@ const PageSelector = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button mr={3} onClick={onClose} variant="outline">
+            <Button mr={3} onClick={handleClose} variant="outline">
               {t('dialog.cancel')}
             </Button>
             <Button
