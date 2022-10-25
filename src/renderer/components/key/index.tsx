@@ -50,6 +50,7 @@ const Key: React.FC<IKey> = ({ button }) => {
       backgroundPosition: 'center center',
       backgroundImage: `url(${buttonKey?.backgroundUrl})`,
       display: 'flex',
+      textAlign: 'center',
       alignItems: buttonKey?.backgroundUrl ? 'flex-end' : 'center',
       justifyContent: 'center',
       borderRadius: '17%',
