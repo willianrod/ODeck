@@ -6,5 +6,6 @@
   "help": "Help",
   "documentation": "Documentation",
   "community_discussions": "Community Discussions",
-  "report_bug": "Report Bug"
+  "report_bug": "Report Bug",
+  "delete": "Delete"
 }
