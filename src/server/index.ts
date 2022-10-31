@@ -36,6 +36,8 @@ const startServer = () => {
 
     socket.on(EventTypes.DEVICES.SELECT, deviceController.selectDevice);
 
+    socket.on(EventTypes.DEVICES.DELETE, deviceController.deleteDevice);
+
     // // IPs
     socket.on(EventTypes.IPS.GET, ipsController.getIps);
 

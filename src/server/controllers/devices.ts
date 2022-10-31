@@ -7,6 +7,8 @@ import { getCurrentPageKeys } from '../helpers/pages';
 import Devices from '../db/devices';
 import Pages from '../db/pages';
 
+import PagesController from './pages';
+
 const devicesDb = new Devices();
 const pagesDb = new Pages();
 
@@ -56,6 +58,16 @@ const DeviceControler = (socket: Socket, io: Server) => ({
     socket.emit(EventTypes.PAGES.SET, pages);
     socket.emit(EventTypes.PAGES.CURRENT, page);
     socket.emit(EventTypes.KEYS.SET, keys);
+  },
+  deleteDevice: (device: IDevice) => {
+    const pages = pagesDb.getByDeviceId(device.id);
+    const pagesController = PagesController(socket, io);
+
+    pages.forEach((page) => pagesController.deletePage(page));
+    devicesDb.delete(device.id);
+
+    const devices = devicesDb.getAll();
+    socket.emit(EventTypes.DEVICES.SET, devices);
   },
 });
 
