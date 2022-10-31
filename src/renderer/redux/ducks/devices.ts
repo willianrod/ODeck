@@ -60,4 +60,10 @@ export const createDevice = (device: IDevice) => {
   };
 };
 
+export const deleteDevice = (device : IDevice) => {
+  return (_dispatch: any, _getState: any, socket: Socket) => {
+    socket.emit(EventTypes.DEVICES.DELETE, device);
+  };
+};
+
 export default reducer;
