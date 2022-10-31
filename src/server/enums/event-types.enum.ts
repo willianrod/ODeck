@@ -24,6 +24,11 @@ const EventTypes = {
      * Event used to broadcast current device
      */
     CURRENT: 'CURRENT_DEVICE',
+
+    /**
+     * Event used to request the deletion of a device
+     */
+    DELETE: 'DELETE_DEVICE',
   },
   KEYS: {
     /**
