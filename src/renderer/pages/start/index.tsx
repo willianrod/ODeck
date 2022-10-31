@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { IDevice } from 'interfaces';
 import { useNavigate } from 'react-router-dom';
-import { selectDevice } from 'renderer/redux/ducks/devices';
+import { selectDevice, deleteDevice } from 'renderer/redux/ducks/devices';
 import CreatePageButton from 'renderer/components/CreatePageButton';
 
 const Start = () => {
@@ -21,6 +21,13 @@ const Start = () => {
       navigate('/dashboard');
     },
     [navigate, dispatch]
+  );
+
+  const handleDeleteDevice = useCallback(
+    (device: IDevice) => {
+      dispatch(deleteDevice(device));
+    },
+    [dispatch]
   );
 
   const renderDevice = (device: IDevice) => {
@@ -41,10 +48,14 @@ const Start = () => {
             </Text>
           </Box>
           <Flex gap={4}>
-            {/* TODO: Add a delete button */}
-            {/* <Button size="sm" variant="ghost" colorScheme="red">
-              Delete
-            </Button> */}
+            <Button
+              size="sm"
+              variant="ghost"
+              colorScheme="red"
+              onClick={() => handleDeleteDevice(device)}
+            >
+              {t('delete')}
+            </Button>
             <Button
               size="sm"
               variant="ghost"
