@@ -1,5 +1,5 @@
 import { IPage } from 'interfaces';
-import React, { useEffect, createContext } from 'react';
+import { useEffect, createContext, ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDevice, setDevices } from 'renderer/redux/ducks/devices';
 import { requestIps, setIps } from 'renderer/redux/ducks/ips';
@@ -15,7 +15,7 @@ export const SocketContext = createContext<{
   socket,
 });
 
-const SocketProvider: React.FC = ({ children }) => {
+const SocketProvider = ({ children }: { children: ReactElement }) => {
   const selectedDevice = useSelector(
     (state: any) => state.devices.currentDevice
   );

@@ -6,6 +6,7 @@ import { IDevice } from 'interfaces';
 import { useNavigate } from 'react-router-dom';
 import { selectDevice } from 'renderer/redux/ducks/devices';
 import CreatePageButton from 'renderer/components/CreatePageButton';
+import overlay from '../../public/logo.png';
 
 const Start = () => {
   const navigate = useNavigate();
@@ -61,21 +62,15 @@ const Start = () => {
 
   return (
     <Flex flexDir="column" w="100vw" h="100vh">
-      <Center
-        height="150px"
-        flex={0.3}
-        background="linear-gradient(265.97deg, #171923 0%, #18202E 28.18%, #1A2D38 43.12%, #1A3638 59.94%, #0E2829 79.05%, #171923 100.72%)"
-      >
-        <Box padding={8} textAlign="center">
-          <Heading>{t('welcome_to')}</Heading>
-          <Heading>{t('app_name')}</Heading>
-        </Box>
+      <Center height="150px" flex={0.3} bgColor="gray.900">
+        <img width="128px" height="128px" src={overlay} alt="logo" />
       </Center>
       <Flex
         height="calc(100% - 150px)"
         flex={0.7}
         padding={4}
         flexDir="row"
+        justifyContent="center"
         w="100%"
         gap={4}
       >
