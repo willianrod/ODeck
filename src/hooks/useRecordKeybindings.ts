@@ -11,6 +11,10 @@ interface IUseKeyBindingsResponse {
   keysPressed: string[];
 }
 
+const REMAP_KEYS: { [key: string]: string } = {
+  Meta: 'command',
+};
+
 const useRecordKeybindings = ({
   onEnd,
 }: IUseKeyBindings): IUseKeyBindingsResponse => {
@@ -21,7 +25,7 @@ const useRecordKeybindings = ({
     const listener = (event: KeyboardEvent) => {
       event.preventDefault();
       setKeysPressed((currentKeys) => {
-        const newKey = event.key.toLowerCase();
+        const newKey = REMAP_KEYS[event.key] || event.key.toLowerCase();
         if (currentKeys.includes(newKey)) return currentKeys;
         return [...currentKeys, newKey];
       });
