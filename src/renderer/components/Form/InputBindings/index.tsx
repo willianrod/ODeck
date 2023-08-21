@@ -39,7 +39,7 @@ const InputBindings: React.FC<InputBindingsProps> = ({
 
   const handleEnd = useCallback(
     (keys: string[]) => {
-      setValue(name, keys.join(','));
+      setValue(name, keys);
     },
     [setValue, name]
   );

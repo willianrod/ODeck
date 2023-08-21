@@ -47,7 +47,7 @@ const Editor = () => {
           ...values,
           actionConfig: {
             exePath: values.exePath,
-            bindings: values.bindings?.split(','),
+            bindings: values.bindings,
             url: values.url,
             pageId: values.destinationPageId,
             soundPath: values.soundPath,
