@@ -1,11 +1,12 @@
-import { useCallback } from 'react';
-import { Box, Flex, Text, Center, Button, Heading } from '@chakra-ui/react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { Box, Button, Center, Flex, Heading, Text } from '@chakra-ui/react';
 import { IDevice } from 'interfaces';
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectDevice } from 'renderer/redux/ducks/devices';
 import CreatePageButton from 'renderer/components/CreatePageButton';
+import DeleteWarnModal from 'renderer/components/DeleteWarnModal';
+import { selectDevice } from 'renderer/redux/ducks/devices';
 import overlay from '../../public/logo.png';
 
 const Start = () => {
@@ -42,10 +43,7 @@ const Start = () => {
             </Text>
           </Box>
           <Flex gap={4}>
-            {/* TODO: Add a delete button */}
-            {/* <Button size="sm" variant="ghost" colorScheme="red">
-              Delete
-            </Button> */}
+            <DeleteWarnModal device={device} />
             <Button
               size="sm"
               variant="ghost"

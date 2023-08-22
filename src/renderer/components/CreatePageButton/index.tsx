@@ -1,20 +1,20 @@
 import {
-  Icon,
   Button,
+  Icon,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
   ModalBody,
+  ModalCloseButton,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
-import { useCallback, memo } from 'react';
-import { useDispatch } from 'react-redux';
+import { memo, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { MdAdd } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 import { createDevice } from 'renderer/redux/ducks/devices';
 import Form from '../Form';
 import TextInput from '../Form/TextInput';

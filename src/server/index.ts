@@ -1,13 +1,13 @@
+import cors from 'cors';
 import express from 'express';
 import http from 'http';
-import cors from 'cors';
 import { Server } from 'socket.io';
 
-import EventTypes from './enums/event-types.enum';
 import DeviceControler from './controllers/devices';
+import IpsController from './controllers/ips';
 import KeysController from './controllers/keys';
 import PagesController from './controllers/pages';
-import IpsController from './controllers/ips';
+import EventTypes from './enums/event-types.enum';
 
 const startServer = () => {
   const expressApp = express();
@@ -35,6 +35,8 @@ const startServer = () => {
     socket.on(EventTypes.DEVICES.CREATE, deviceController.createDevice);
 
     socket.on(EventTypes.DEVICES.SELECT, deviceController.selectDevice);
+
+    socket.on(EventTypes.DEVICES.DELETE, deviceController.deleteDevice);
 
     // // IPs
     socket.on(EventTypes.IPS.GET, ipsController.getIps);
