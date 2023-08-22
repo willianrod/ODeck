@@ -10,6 +10,12 @@ ODeck es una alternativa gratuita y de código abierto a StreamDeck hecha con Re
 
 Suele ser una alternativa más económica a StreamDeck porque puedes usar tu smartphone actual o limpiar el polvo de un dispositivo antiguo del fondo de tu cajón y darle otro propósito de vida a este dispositivo.
 
+## Este archivo también está disponible en:
+
+- [Español](https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md)
+- [English](https://github.com/willianrod/ODeck/blob/main/README.md)
+- Português
+
 ## SO compatibles
 
 Actualmente, ODeck aún no es compatible con todas las plataformas, pero debería serlo en un futuro próximo. Consulte la lista de los sistemas operativos compatibles actualmente.
