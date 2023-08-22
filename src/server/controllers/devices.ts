@@ -6,6 +6,7 @@ import Devices from '../db/devices';
 import Pages from '../db/pages';
 import EventTypes from '../enums/event-types.enum';
 import { getCurrentPageKeys } from '../helpers/pages';
+import PagesController from './pages';
 
 const devicesDb = new Devices();
 const pagesDb = new Pages();
@@ -43,6 +44,11 @@ const DeviceControler = (socket: Socket, io: Server) => ({
     socket.emit(EventTypes.DEVICES.SET, devices);
   },
   deleteDevice: (deviceId: string) => {
+    const pages = pagesDb.getByDeviceId(deviceId);
+    const pagesController = PagesController(socket, io);
+
+    pages.forEach((page) => pagesController.deletePage(page));
+
     devicesDb.delete(deviceId);
 
     const devices = devicesDb.getAll();
