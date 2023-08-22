@@ -13,8 +13,9 @@ interface IKey {
 }
 
 const Key: React.FC<IKey> = ({ button }) => {
-  const { keys, currentPage } = useSelector((state: any) => ({
+  const { keys, currentPage, currentKey } = useSelector((state: any) => ({
     keys: state.keys.items,
+    currentKey: state.keys.currentKey,
     currentPage: state.pages.currentPage,
   }));
 
@@ -75,10 +76,15 @@ const Key: React.FC<IKey> = ({ button }) => {
       tabIndex={-1}
     >
       <img
-        className={styles.buttonOverlay}
+        className={
+          currentKey?.position === button.id
+            ? styles.buttonOverlayActive
+            : styles.buttonOverlay
+        }
         src={overlay}
         alt="overlay"
         draggable={false}
+        id={String(button.id)}
       />
       {!buttonKey?.hideLabel && (
         <span className={styles.buttonLabel}>{buttonKey?.label}</span>
