@@ -44,11 +44,11 @@ Actualmente, ODeck aún no es compatible con todas las plataformas, pero deberí
 
 ### Vista previa del deck
 
-https://user-images.githubusercontent.com/6539258/154787245-872187a9-b05e-44c4-b162-42037ace352a.mp4
+https://github.com/willianrod/ODeck/assets/6539258/9c58dbb1-38f6-4602-b211-aecbfc8e4dff
 
 ### Vista previa del panel de administración
 
-https://user-images.githubusercontent.com/6539258/154787603-3cf7bcd0-f82c-4092-96b9-28546fe16568.mp4
+https://github.com/willianrod/ODeck/assets/6539258/51710202-d665-4f8c-bd7c-17c470e8e29b
 
 ## Documentación
 
