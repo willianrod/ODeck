@@ -3,12 +3,18 @@
 <div align="center">
 ⚠️ THIS SOFTWARE IS STILL IN ALPHA AND MAY CONTAIN BUGS ⚠️
 </div>
-  
+
 # For Users
 
 ODeck is a free and open source alternative to StreamDeck made with React, React Native, Electron, Socket.IO and some other tecnologies. It allows you to easily control some features of your computer with the power of a tap on your smartphone.
 
 It tends to be a cheaper alternative to StreamDeck because you can use your current smartphone or clean the dust from an older device from the bottom of your drawer and give another pourpose of life to this device.
+
+## The readme also available in:
+
+- [Español](https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md)
+- [English](https://github.com/willianrod/ODeck/blob/main/README.md)
+- Português
 
 ## Suported OS
 
