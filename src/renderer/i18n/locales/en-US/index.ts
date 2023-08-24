@@ -11,5 +11,5 @@ export default {
   header,
   keys,
   'create-page-button': createPageButton,
-  'delete-warn': DeleteWarn,
+  'delete-warn': deleteWarn,
 };
