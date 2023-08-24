@@ -46,7 +46,7 @@ const DeleteWarnModal = ({ device }: { device: IDevice }) => {
             </Button>
             <Button
               variant="outline"
-              onClick={() => handleRemoveDevice()}
+              onClick={handleRemoveDevice}
               colorScheme="red"
             >
               {t('confirm')}
