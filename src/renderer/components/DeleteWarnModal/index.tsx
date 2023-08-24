@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { deleteDevice } from 'renderer/redux/ducks/devices';
 
-const DeleteWarnModal = ({ device }) => {
+const DeleteWarnModal = ({ device }: { device: IDevice }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation('delete-warn');
 
@@ -24,12 +24,9 @@ const DeleteWarnModal = ({ device }) => {
     onClose();
   }, [onClose]);
 
-  const handleRemoveDevice = useCallback(
-    (device: IDevice) => {
-      dispatch(deleteDevice(device));
-    },
-    [dispatch]
-  );
+  const handleRemoveDevice = useCallback(() => {
+    dispatch(deleteDevice(device));
+  }, [dispatch]);
 
   return (
     <>
@@ -49,7 +46,7 @@ const DeleteWarnModal = ({ device }) => {
             </Button>
             <Button
               variant="outline"
-              onClick={() => handleRemoveDevice(device)}
+              onClick={() => handleRemoveDevice()}
               colorScheme="red"
             >
               {t('confirm')}
