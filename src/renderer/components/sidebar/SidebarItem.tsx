@@ -1,28 +1,34 @@
-import { IButtonKey, IKeyTypeItem } from 'interfaces';
+import { HandlerItem, IButtonKey } from 'interfaces';
 import { useDispatch } from 'react-redux';
 import { useDrag } from 'react-dnd';
+import * as Icons from 'react-icons/md';
 import { Box, Icon, Text } from '@chakra-ui/react';
 import ItemTypes from 'renderer/constants/item-types.constants';
 import { createKey } from 'renderer/redux/ducks/keys';
+import KeyTypes from 'server/enums/keys.enum';
+import { useTranslation } from 'react-i18next';
 
 interface ISidebarItem {
-  item: IKeyTypeItem;
+  item: HandlerItem;
+  keyType: KeyTypes;
 }
 
-const SidebarItem: React.FC<ISidebarItem> = ({ item }) => {
+const SidebarItem: React.FC<ISidebarItem> = ({ item, keyType }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation('handlers');
 
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemTypes.NEW_KEY,
       item,
-      end: (dropedItem: any, monitor) => {
+      end: (dropedItem: HandlerItem, monitor) => {
         const dropResult = monitor.getDropResult() as any;
-        if (dropedItem && dropResult) {
+        if (dropResult) {
           const newKey = {
             ...dropedItem.defaults,
             id: new Date().toISOString(),
-            type: dropedItem.type,
+            label: t(dropedItem.defaults.label),
+            type: keyType,
             pageId: dropResult.page.id,
             position: dropResult.button.id,
           } as IButtonKey;
@@ -35,13 +41,12 @@ const SidebarItem: React.FC<ISidebarItem> = ({ item }) => {
         handlerId: monitor.getHandlerId(),
       }),
     }),
-    [dispatch]
+    [dispatch, keyType]
   );
 
   return (
     <Box
       ref={drag}
-      isFullWidth
       cursor="pointer"
       bgColor="gray.900"
       marginTop={1}
@@ -53,11 +58,12 @@ const SidebarItem: React.FC<ISidebarItem> = ({ item }) => {
       overflow="hidden"
     >
       <Text display="flex" flexDir="row" alignItems="center">
-        <Icon as={item.icon} marginRight={2} />
-        {item.label}
+        {/* @ts-expect-error loading icon dinamically from react-icons based on config file */}
+        <Icon as={Icons[item.icon]} marginRight={2} />
+        {t(item.title)}
       </Text>
       <Text fontSize={12} color="gray.500">
-        {item.description}
+        {t(item.description)}
       </Text>
     </Box>
   );

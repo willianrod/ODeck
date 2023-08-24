@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { ReactElement, useCallback, useEffect, useMemo } from 'react';
 import {
   Button,
   Grid,
@@ -10,12 +10,21 @@ import {
 } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
+import { AnyAction } from 'redux';
+
 import Form from 'renderer/components/Form';
 import CheckboxInput from 'renderer/components/Form/CheckboxInput';
 import TextInput from 'renderer/components/Form/TextInput';
 import KeyTypes from 'server/enums/keys.enum';
-import { IPage } from 'interfaces';
+import {
+  HandlerConfig,
+  HandlerInput,
+  HandlerInputValues,
+  IActionConfig,
+  IButtonKey,
+  IPage,
+} from 'interfaces';
 import { deleteKey, updateKey } from 'renderer/redux/ducks/keys';
 import { MdDragIndicator } from 'react-icons/md';
 import styles from './home.module.css';
@@ -24,98 +33,61 @@ import ColorInput from '../Form/ColorInput';
 import InputBindings from '../Form/InputBindings';
 import FileInput from '../Form/FileInput';
 
-const Editor = () => {
-  const { t } = useTranslation('editor');
-
-  const { currentKey, pages } = useSelector((state: any) => ({
-    currentKey: state.keys.currentKey,
+const HandlerInputs: React.FC<{
+  inputs: [HandlerInputValues<unknown>] | never[];
+}> = ({ inputs }) => {
+  const { t } = useTranslation('handlers');
+  const { pages } = useSelector((state: any) => ({
     pages: state.pages.items,
   }));
 
-  const dispatch = useDispatch();
-
-  const form = useForm<any>({
-    mode: 'onSubmit',
-    defaultValues: {},
-  });
-
-  const handleSubmit = useCallback(
-    (values) => {
-      dispatch(
-        updateKey({
-          ...currentKey,
-          ...values,
-          actionConfig: {
-            exePath: values.exePath,
-            bindings: values.bindings,
-            url: values.url,
-            pageId: values.destinationPageId,
-            soundPath: values.soundPath,
-          },
-        })
-      );
-    },
-    [dispatch, currentKey]
-  );
-
-  const handleDeleteKey = useCallback(() => {
-    dispatch(deleteKey(currentKey));
-  }, [dispatch, currentKey]);
-
-  const renderInputByType = () => {
-    if (!currentKey) return null;
-
-    switch (currentKey.type) {
-      case KeyTypes.EXECUTABLE:
+  const renderInputByType = ({
+    type,
+    props,
+    description,
+    label,
+  }: HandlerInputValues<unknown>) => {
+    switch (type) {
+      case 'file':
         return (
           <FileInput
-            name="exePath"
-            label={t('label.path')}
-            defaultValue=""
-            maxLength={200}
-            accept=".exe"
+            name={`actionConfig.${props.name}`}
+            label={t(label)}
+            defaultValue={props.defaultValue}
+            maxLength={props.maxLength}
+            accept={props.accept}
+            hint={t(description)}
             size="md"
           />
         );
-      case KeyTypes.HOTKEY:
+      case 'hotkey':
         return (
           <InputBindings
-            name="bindings"
-            label={t('label.bindings')}
-            defaultValue=""
-            maxLength={200}
+            name={`actionConfig.${props.name}`}
+            label={t(label)}
+            defaultValue={props.defaultValue}
+            maxLength={props.maxLength}
+            hint={t(description)}
             size="md"
           />
         );
-      case KeyTypes.SOUND:
+      case 'pages':
         return (
-          <FileInput
-            name="soundPath"
-            label={t('label.play_sound')}
-            defaultValue=""
-            maxLength={200}
-            accept=".mp3,.wav"
-            size="md"
+          <SelectInput
+            name={`actionConfig.${props.name}`}
+            label={t(label)}
+            options={pages?.map((p: IPage) => ({ key: p.id, label: p.name }))}
           />
         );
-      case KeyTypes.URL:
+      case 'string':
         return (
           <TextInput
             size="md"
-            name="url"
-            label={t('label.url')}
-            defaultValue=""
-            maxLength={200}
-            hint={t('hint.url')}
-          />
-        );
-
-      case KeyTypes.NAVIGATE:
-        return (
-          <SelectInput
-            name="destinationPageId"
-            label={t('label.page')}
-            options={pages?.map((p: IPage) => ({ key: p.id, label: p.name }))}
+            name={`actionConfig.${props.name}`}
+            label={t(label)}
+            defaultValue={props.defaultValue}
+            maxLength={props.maxLength}
+            hint={t(description)}
           />
         );
 
@@ -123,6 +95,61 @@ const Editor = () => {
         return null;
     }
   };
+
+  return <>{inputs?.map(renderInputByType)}</>;
+};
+
+const Editor = () => {
+  const { t } = useTranslation('editor');
+
+  const { currentKey, pages, handlers } = useSelector((state: any) => ({
+    currentKey: state.keys.currentKey as IButtonKey,
+    pages: state.pages.items,
+    handlers: state.handlers,
+  }));
+
+  const dispatch = useDispatch();
+
+  const form = useForm<FieldValues>({
+    mode: 'onSubmit',
+    defaultValues: {
+      actionConfig: {},
+    },
+  });
+
+  const inputs = useMemo(() => {
+    if (!currentKey?.type) return [];
+    const tempInputs = handlers.reduce(
+      (
+        acc: { [key in KeyTypes]: HandlerInput<unknown> },
+        curr: HandlerConfig<unknown>
+      ) => {
+        return {
+          ...acc,
+          ...curr.inputs,
+        };
+      },
+      {}
+    );
+
+    return tempInputs[currentKey.type] as HandlerInput<unknown>;
+  }, [currentKey, handlers]);
+
+  const handleSubmit = useCallback(
+    ({ pageId, ...values }: FieldValues) => {
+      dispatch(
+        updateKey({
+          ...currentKey,
+          ...values,
+        }) as unknown as AnyAction
+      );
+    },
+    [dispatch, currentKey]
+  );
+
+  const handleDeleteKey = useCallback(() => {
+    dispatch(deleteKey(currentKey) as unknown as AnyAction);
+  }, [dispatch, currentKey]);
 
   const renderInputs = () => {
     return (
@@ -167,7 +194,7 @@ const Editor = () => {
           </GridItem>
         </Grid>
 
-        {renderInputByType()}
+        <HandlerInputs inputs={inputs} />
 
         <div className={styles.buttons}>
           <Button onClick={handleDeleteKey} color="red.500">
@@ -222,23 +249,25 @@ const Editor = () => {
   };
 
   useEffect(() => {
-    const exePath = currentKey?.actionConfig?.exePath || '';
-    const bindings = currentKey?.actionConfig?.bindings?.join(',') || '';
-    const url = currentKey?.actionConfig?.url || '';
-    const soundPath = currentKey?.actionConfig?.soundPath || '';
+    const values = {} as { [key: string]: unknown };
+    inputs?.forEach((input) => {
+      if (!currentKey?.actionConfig)
+        values[input.props.name] = input.props.defaultValue;
+      else
+        values[input.props.name] =
+          currentKey.actionConfig[input.props.name as keyof IActionConfig] ||
+          input.props.defaultValue;
+    });
+
     form.reset({
-      destinationPageId: currentKey?.actionConfig?.pageId || '',
       label: currentKey?.label || '',
       backgroundColor: currentKey?.backgroundColor || '',
       backgroundUrl: currentKey?.backgroundUrl || '',
       color: currentKey?.color || '#fff',
       hideLabel: currentKey?.hideLabel || '',
-      exePath,
-      bindings,
-      url,
-      soundPath,
+      actionConfig: values,
     });
-  }, [form, currentKey]);
+  }, [form, currentKey, handlers, inputs]);
 
   if (!currentKey?.id) return renderEmptyContent();
 

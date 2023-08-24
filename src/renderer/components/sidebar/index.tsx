@@ -1,43 +1,75 @@
+import { useMemo } from 'react';
 import {
   Accordion,
   AccordionItem,
   AccordionButton,
   Box,
   AccordionIcon,
-  Icon,
   AccordionPanel,
   Text,
 } from '@chakra-ui/react';
-import { IKeyType, IKeyTypeItem } from 'interfaces';
-import KEY_TYPES from 'renderer/constants/key-types.constant';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { HandlerConfig } from 'interfaces';
 import SidebarItem from './SidebarItem';
+import KeyTypes from '../../../server/enums/keys.enum';
 
 const Sidebar = () => {
-  const renderKeyTypes = (keyType: IKeyType) => (
-    <AccordionItem padding={4} borderColor="gray.800">
-      <AccordionButton borderRadius={8} backgroundColor="gray.800" zIndex={4}>
-        <Box flex="1" textAlign="left" fontWeight="bold">
-          <Text display="flex" flexDir="row" alignItems="center">
-            <Icon as={keyType.icon} marginRight={2} />
-            {keyType.label}
-          </Text>
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-      <AccordionPanel
-        p={4}
-        backgroundColor="gray.800"
-        marginTop={1}
-        borderRadius={8}
-      >
-        {keyType.items.map((key: IKeyTypeItem) => (
-          <SidebarItem item={key} />
-        ))}
-      </AccordionPanel>
-    </AccordionItem>
-  );
+  const handlers = useSelector((state: any) => state.handlers);
+  const { t } = useTranslation('handlers');
 
-  return <Accordion allowToggle>{KEY_TYPES.map(renderKeyTypes)}</Accordion>;
+  const groupedHandlers = useMemo<Map<string, HandlerConfig<unknown>[]>>(() => {
+    const group = new Map();
+    handlers?.forEach((handler: HandlerConfig<unknown>) => {
+      if (!group.get(handler.groupKey)) {
+        group.set(handler.groupKey, [handler]);
+      } else {
+        group.set(handler.groupKey, [...group.get(handler.groupKey), handler]);
+      }
+    }, new Map());
+
+    return group;
+  }, [handlers]);
+
+  const renderKeyTypes = ([groupKey, handlersGroup]: [
+    string,
+    HandlerConfig<unknown>[]
+  ]) => {
+    return (
+      <AccordionItem key={groupKey} padding={4} borderColor="gray.800">
+        <AccordionButton borderRadius={8} backgroundColor="gray.800" zIndex={4}>
+          <Box flex="1" textAlign="left" fontWeight="bold">
+            <Text display="flex" flexDir="row" alignItems="center">
+              {t(`group.${groupKey}`)}
+            </Text>
+          </Box>
+          <AccordionIcon />
+        </AccordionButton>
+        <AccordionPanel
+          p={4}
+          backgroundColor="gray.800"
+          marginTop={1}
+          borderRadius={8}
+        >
+          {handlersGroup.map((group) => {
+            return Object.entries(group.handlers).map(([handlerKey, item]) => (
+              <SidebarItem
+                key={handlerKey}
+                keyType={handlerKey as KeyTypes}
+                item={item}
+              />
+            ));
+          })}
+        </AccordionPanel>
+      </AccordionItem>
+    );
+  };
+
+  return (
+    <Accordion allowToggle>
+      {Array.from(groupedHandlers.entries()).map(renderKeyTypes)}
+    </Accordion>
+  );
 };
 
 export default Sidebar;

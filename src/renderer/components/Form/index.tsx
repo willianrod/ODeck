@@ -1,9 +1,10 @@
-import React from 'react';
-import { FormProvider } from 'react-hook-form';
+import React, { ReactElement } from 'react';
+import { FieldValues, FormProvider, UseFormReturn } from 'react-hook-form';
 
 interface FormProps {
-  form: any;
-  onSubmit(values: unknown): any;
+  form: UseFormReturn<FieldValues, object>;
+  onSubmit(values: unknown): void;
+  children: ReactElement | ReactElement[];
 }
 
 const Form: React.FC<FormProps> = ({ children, form, onSubmit }) => {

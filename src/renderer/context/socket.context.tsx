@@ -1,7 +1,8 @@
-import { IPage } from 'interfaces';
+import { HandlerConfig, IPage } from 'interfaces';
 import { useEffect, createContext, ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDevice, setDevices } from 'renderer/redux/ducks/devices';
+import { requestConfig, setConfig } from 'renderer/redux/ducks/handlers';
 import { requestIps, setIps } from 'renderer/redux/ducks/ips';
 import { setKeys } from 'renderer/redux/ducks/keys';
 import { setCurrentPage, setPages } from 'renderer/redux/ducks/pages';
@@ -54,10 +55,14 @@ const SocketProvider = ({ children }: { children: ReactElement }) => {
     socket.on(EventTypes.IPS.SET, (data: Array<string>) => {
       dispatch(setIps(data));
     });
+    socket.on(EventTypes.SYSTEM.SET, (data: Array<HandlerConfig<unknown>>) => {
+      dispatch(setConfig(data));
+    });
   }, [selectedDevice, dispatch]);
 
   useEffect(() => {
     dispatch(requestIps());
+    dispatch(requestConfig());
   }, [dispatch]);
 
   return (

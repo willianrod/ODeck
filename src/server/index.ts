@@ -2,12 +2,18 @@ import cors from 'cors';
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
+import EventEmitter from 'events';
 
 import DeviceControler from './controllers/devices';
 import IpsController from './controllers/ips';
 import KeysController from './controllers/keys';
 import PagesController from './controllers/pages';
 import EventTypes from './enums/event-types.enum';
+
+import registerHandlers from './handlers';
+import { IButtonKey } from '../interfaces';
+
+const signals = new EventEmitter();
 
 const startServer = () => {
   const expressApp = express();
@@ -20,14 +26,23 @@ const startServer = () => {
     },
   });
 
+  const { configs } = registerHandlers({
+    io,
+    signals,
+  });
+
   io.on('connection', (socket) => {
     // eslint-disable-next-line no-console
-    console.log('Device connected');
+    console.log('Device connected', socket.id);
 
     const deviceController = DeviceControler(socket, io);
     const keysController = KeysController(socket, io);
     const pagesController = PagesController(socket, io);
     const ipsController = IpsController(socket, io);
+
+    socket.on(EventTypes.SYSTEM.GET, () => {
+      socket.emit(EventTypes.SYSTEM.SET, Array.from(configs.values()));
+    });
 
     // Devices
     socket.on(EventTypes.DEVICES.GET, deviceController.getDevices);
@@ -54,7 +69,9 @@ const startServer = () => {
 
     socket.on(EventTypes.KEYS.UPDATE, keysController.updateKey);
 
-    socket.on(EventTypes.KEYS.PRESS, keysController.keyPress);
+    socket.on(EventTypes.KEYS.PRESS, (keyPressed: IButtonKey) => {
+      signals.emit(keyPressed.type, { keyPressed, socket });
+    });
   });
 
   server.listen(3000, () => {

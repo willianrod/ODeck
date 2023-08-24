@@ -1,5 +1,6 @@
 import { IconType } from 'react-icons';
 import KeyTypes from 'server/enums/keys.enum';
+import { Socket } from 'socket.io';
 
 interface IActionConfig {
   bindings?: Array<string>;
@@ -74,4 +75,47 @@ interface ICreateDevice {
 interface ISelectDevice {
   deviceId: string;
   deviceType: 'ADMIN' | 'DECK';
+}
+
+interface RegisteredHandler {
+  config: any;
+  handler: { initialize: () => void };
+}
+
+interface KeyPressEvent {
+  keyPressed: IButtonKey;
+  socket: Socket;
+}
+
+interface InputProp {
+  defaultValue: string;
+  name: string;
+}
+
+type HandlerItem = {
+  readonly title: string;
+  readonly description?: string;
+  readonly defaults: Partial<IButtonKey>;
+  readonly icon: string;
+};
+
+type HandlerInputValues<T> = {
+  readonly label: string;
+  readonly description: string;
+  readonly type: string;
+  readonly props: InputProp & T;
+};
+
+type HandlerInput<T> = [HandlerInputValues<T>] | [];
+
+interface HandlerConfig<T> {
+  readonly groupKey: string;
+  readonly id: string;
+  handlers: Partial<{
+    [key in KeyTypes]: HandlerItem;
+  }>;
+  readonly config: [];
+  inputs: Partial<{
+    [key in KeyTypes]: HandlerInput<T>;
+  }>;
 }

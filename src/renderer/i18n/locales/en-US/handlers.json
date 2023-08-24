@@ -1,0 +1,68 @@
+{
+  "group": {
+    "media": "Media",
+    "deck": "Deck",
+    "system": "System"
+  },
+  "hotkey": {
+    "title": "Hotkey",
+    "description": "Simulate a combination of keys to invoke a hotkey shortcut.",
+    "label": "Hotkey",
+    "input": {
+      "label_1": "Bindings",
+      "description_1": "Click 'Capture' and press the key combination you want to trigger when the key is pressed."
+    }
+  },
+  "navigate": {
+    "title": "Navigate",
+    "description": "Navigate to another page.",
+    "label": "Go to...",
+    "input": {
+      "label_1": "Page",
+      "description_1": "Select the page to which you want to navigate."
+    }
+  },
+  "go_back": {
+    "title": "Go back",
+    "description": "Return to the previous page.",
+    "label": "Go Back"
+  },
+  "url": {
+    "title": "URL",
+    "description": "Open a URL in your default browser.",
+    "label": "Open link",
+    "input": {
+      "label_1": "URL",
+      "description_1": "Enter the URL you want to open when the button is pressed."
+    }
+  },
+  "media": {
+    "media": "Media",
+    "play": "Play",
+    "pause": "Pause",
+    "next": "Next",
+    "previous": "Previous",
+    "stop": "Stop",
+    "mute": "Mute",
+    "volume_plus": "Volume+",
+    "volume_minus": "Volume-"
+  },
+  "executable": {
+    "title": "Run executable",
+    "description": "Open an app installed on your computer.",
+    "label": "Open app",
+    "input": {
+      "label_1": "Executable",
+      "description_1": "Select the executable file you want to run when the button is pressed."
+    }
+  },
+  "sound": {
+    "title": "Play sound",
+    "label": "Play sound",
+    "description": "Allows playing a .mp3 or .wav file every time the button is pressed.",
+    "input": {
+      "label_1": "Sound",
+      "description_1": "Select the file you want to play when you press the button."
+    }
+  }
+}

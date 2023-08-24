@@ -44,7 +44,7 @@ const TextInput: React.FC<TextInputProps> = ({
       isDisabled={disabled}
       isRequired={required}
     >
-      <FormLabel htmlFor={name} required={required}>
+      <FormLabel color="white" htmlFor={name}>
         {label}
       </FormLabel>
       {hint && <FormHelperText marginBottom={4}>{hint}</FormHelperText>}

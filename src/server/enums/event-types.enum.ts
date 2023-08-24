@@ -1,4 +1,15 @@
 const EventTypes = {
+  SYSTEM: {
+    /**
+     * Event to set handlers config
+     */
+    SET: 'SET_CONFIG',
+
+    /**
+     * Event used to request all handlers config
+     */
+    GET: 'GET_CONFIG',
+  },
   DEVICES: {
     /**
      * Event used to select a device
