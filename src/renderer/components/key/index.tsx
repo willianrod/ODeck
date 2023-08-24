@@ -13,8 +13,9 @@ interface IKey {
 }
 
 const Key: React.FC<IKey> = ({ button }) => {
-  const { keys, currentPage } = useSelector((state: any) => ({
+  const { keys, currentPage, currentKey } = useSelector((state: any) => ({
     keys: state.keys.items,
+    currentKey: state.keys.currentKey,
     currentPage: state.pages.currentPage,
   }));
 
@@ -57,9 +58,12 @@ const Key: React.FC<IKey> = ({ button }) => {
       position: 'relative',
       transition: 'transform .1s',
       margin: 4,
-      transform: canDrop && isOver ? 'scale(1.1)' : undefined,
+      transform:
+        (canDrop && isOver) || currentKey?.position === button.id
+          ? 'scale(1.1)'
+          : undefined,
     }),
-    [buttonKey, canDrop, isOver]
+    [buttonKey, canDrop, isOver, currentKey, button]
   );
 
   const handleSelectKey = useCallback(() => {
@@ -75,10 +79,10 @@ const Key: React.FC<IKey> = ({ button }) => {
       tabIndex={-1}
     >
       <img
-        className={styles.buttonOverlay}
         src={overlay}
         alt="overlay"
         draggable={false}
+        className={styles.buttonOverlay}
       />
       {!buttonKey?.hideLabel && (
         <span className={styles.buttonLabel}>{buttonKey?.label}</span>
