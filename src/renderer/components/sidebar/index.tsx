@@ -66,7 +66,7 @@ const Sidebar = () => {
   };
 
   return (
-    <Accordion allowToggle>
+    <Accordion allowToggle bgColor="gray.900" h="100%">
       {Array.from(groupedHandlers.entries()).map(renderKeyTypes)}
     </Accordion>
   );

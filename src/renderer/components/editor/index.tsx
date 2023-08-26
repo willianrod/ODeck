@@ -102,9 +102,8 @@ const HandlerInputs: React.FC<{
 const Editor = () => {
   const { t } = useTranslation('editor');
 
-  const { currentKey, pages, handlers } = useSelector((state: any) => ({
+  const { currentKey, handlers } = useSelector((state: any) => ({
     currentKey: state.keys.currentKey as IButtonKey,
-    pages: state.pages.items,
     handlers: state.handlers,
   }));
 
@@ -153,68 +152,77 @@ const Editor = () => {
 
   const renderInputs = () => {
     return (
-      <Form form={form} onSubmit={handleSubmit}>
-        <Grid templateColumns="repeat(2, 1fr)" gap={4} mb={4}>
-          <GridItem colSpan={1}>
-            <TextInput
-              name="label"
-              label={t('label.label')}
-              defaultValue=""
-              maxLength={100}
-              size="md"
-            />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <ColorInput
-              name="backgroundColor"
-              label={t('label.background_color')}
-              defaultValue="#fff"
-              size="md"
-            />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <TextInput
-              name="backgroundUrl"
-              label={t('label.background_url')}
-              defaultValue=""
-              maxLength={1000}
-              size="md"
-            />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <ColorInput
-              name="color"
-              label={t('label.text_color')}
-              defaultValue=""
-              size="md"
-            />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <CheckboxInput name="hideLabel" label={t('label.hide_label')} />
-          </GridItem>
-        </Grid>
+      <Box bgColor="gray.900" height="100%" p={4} overflow="auto">
+        <Form form={form} onSubmit={handleSubmit}>
+          <Grid templateColumns="repeat(2, 1fr)" gap={4} mb={4}>
+            <GridItem colSpan={1}>
+              <TextInput
+                name="label"
+                label={t('label.label')}
+                defaultValue=""
+                maxLength={100}
+                size="md"
+              />
+            </GridItem>
+            <GridItem colSpan={1}>
+              <ColorInput
+                name="backgroundColor"
+                label={t('label.background_color')}
+                defaultValue="#fff"
+                size="md"
+              />
+            </GridItem>
+            <GridItem colSpan={1}>
+              <TextInput
+                name="backgroundUrl"
+                label={t('label.background_url')}
+                defaultValue=""
+                maxLength={1000}
+                size="md"
+              />
+            </GridItem>
+            <GridItem colSpan={1}>
+              <ColorInput
+                name="color"
+                label={t('label.text_color')}
+                defaultValue=""
+                size="md"
+              />
+            </GridItem>
+            <GridItem colSpan={1}>
+              <CheckboxInput name="hideLabel" label={t('label.hide_label')} />
+            </GridItem>
+          </Grid>
 
-        <HandlerInputs inputs={inputs} />
+          <HandlerInputs inputs={inputs} />
 
-        <div className={styles.buttons}>
-          <Button onClick={handleDeleteKey} color="red.500">
-            {t('label.remove')}
-          </Button>
-          <Button
-            className={styles.saveButton}
-            colorScheme="teal"
-            type="submit"
-          >
-            {t('label.save')}
-          </Button>
-        </div>
-      </Form>
+          <div className={styles.buttons}>
+            <Button onClick={handleDeleteKey} color="red.500">
+              {t('label.remove')}
+            </Button>
+            <Button
+              className={styles.saveButton}
+              colorScheme="teal"
+              type="submit"
+            >
+              {t('label.save')}
+            </Button>
+          </div>
+        </Form>
+      </Box>
     );
   };
 
   const renderEmptyContent = () => {
     return (
-      <Flex justifyContent="center" alignItems="center" h="100%" w="100%">
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        h="100%"
+        w="100%"
+        bgColor="gray.900"
+        overflow="auto"
+      >
         <Box
           bg="gray.800"
           position="relative"

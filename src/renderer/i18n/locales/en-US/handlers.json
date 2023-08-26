@@ -1,4 +1,12 @@
 {
+  "settings": {
+    "executable": "Executable",
+    "hotkey": "Hotkey",
+    "media": "Media",
+    "navigation": "Navigation",
+    "sound": "Sound",
+    "url": "URL"
+  },
   "group": {
     "media": "Media",
     "deck": "Deck",

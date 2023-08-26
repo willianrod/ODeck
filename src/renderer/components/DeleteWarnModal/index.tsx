@@ -26,7 +26,7 @@ const DeleteWarnModal = ({ device }: { device: IDevice }) => {
 
   const handleRemoveDevice = useCallback(() => {
     dispatch(deleteDevice(device));
-  }, [dispatch]);
+  }, [dispatch, device]);
 
   return (
     <>
