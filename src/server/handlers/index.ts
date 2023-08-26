@@ -1,10 +1,36 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import type EventEmitter from 'events';
 import type { Server } from 'socket.io';
 import { HandlerConfig } from '../../interfaces';
 import Handlers from '../db/handlers';
 import HandlerClass from './common/handler';
+
+import ExecutableHandler, { config as executableConfig } from './executable';
+import HotkeyHandler, { config as hotkeyConfig } from './hotkey';
+import MediaHandler, { config as mediaConfig } from './media';
+import NavigationHandler, { config as navigationConfig } from './navigation';
+import SoundHandler, { config as soundConfig } from './sound';
+import UrlHandler, { config as urlConfig } from './url';
+
+interface HandlerConstructor {
+  new ({
+    io,
+    signals,
+    id,
+  }: {
+    io: Server;
+    signals: EventEmitter;
+    id: string;
+  }): HandlerClass;
+}
+
+const HANDLERS: [HandlerConstructor, HandlerConfig][] = [
+  [ExecutableHandler, executableConfig],
+  [HotkeyHandler, hotkeyConfig],
+  [MediaHandler, mediaConfig],
+  [NavigationHandler, navigationConfig],
+  [SoundHandler, soundConfig],
+  [UrlHandler, urlConfig],
+];
 
 const handlersDb = new Handlers();
 
@@ -39,21 +65,8 @@ const initializeHandlerData = ({ config }: { config: HandlerConfig }) => {
         ...configValues,
       },
     });
-    console.log(handlersDb.getById(config.id));
   }
 };
-
-interface HandlerConstructor {
-  new ({
-    io,
-    signals,
-    id,
-  }: {
-    io: Server;
-    signals: EventEmitter;
-    id: string;
-  }): HandlerClass;
-}
 
 export default function registerHandlers({
   io,
@@ -62,50 +75,29 @@ export default function registerHandlers({
   io: Server;
   signals: EventEmitter;
 }) {
-  const files: string[] = fs.readdirSync(__dirname);
-
   const configs: Map<string, HandlerConfig> = new Map();
   const handlers: Map<string, { initialize: () => void }> = new Map();
 
-  const handlersConfig = handlersDb.getAll();
+  HANDLERS.forEach(([Handler, config]) => {
+    initializeHandlerData({ config });
 
-  files.forEach((file) => {
-    const filePath: string = path.join(__dirname, file);
-    const fileStat: fs.Stats = fs.statSync(filePath);
+    const handler = new Handler({
+      io,
+      signals,
+      id: config.id,
+    });
 
-    if (fileStat.isFile() && !file.includes('index')) {
-      const {
-        default: Handler,
-        config,
-      }: {
-        default: HandlerConstructor;
-        config: HandlerConfig;
-        // eslint-disable-next-line import/no-dynamic-require, global-require
-      } = require(filePath);
+    configs.set(config.id, config);
+    const handlerConfig = handlersDb.getById(config.id);
 
-      initializeHandlerData({ config });
-
-      const handler = new Handler({
-        io,
-        signals,
-        id: config.id,
-      });
-
-      configs.set(config.id, config);
-      const handlerConfig = handlersConfig.find((h) => h.id === config.id);
-
-      if (typeof handler.initialize !== 'function') {
-        // eslint-disable-next-line no-console
-        console.warn('Handler without initialize() method found at:', filePath);
-        throw new Error('Each handler must have an initialize() metod');
-      }
-
-      if (!handlerConfig?.data.active) return;
-      console.log(config.id, 'initialized');
-
-      handler.initialize();
-      handlers.set(config.id, handler);
+    if (typeof handler.initialize !== 'function') {
+      // eslint-disable-next-line no-console
+      throw new Error('Each handler must have an initialize() method');
     }
+
+    if (!handlerConfig?.data.active) return;
+    handler.initialize();
+    handlers.set(config.id, handler);
   });
 
   return { handlers, configs };
