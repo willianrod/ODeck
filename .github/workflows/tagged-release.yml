@@ -1,0 +1,89 @@
+name: 'tagged-release'
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release-windows:
+    if: ${{ github.repository_owner == 'WillianRod' }}
+    name: Release for Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate Package
+        run: yarn package
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ODeck-Windows
+          path: release/build/ODeck*.exe
+
+  release-macos:
+    if: ${{ github.repository_owner == 'WillianRod' }}
+    name: Release for MacOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate Package
+        run: yarn package
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ODeck-MacOS
+          path: release/build/ODeck*.dmg
+
+  tagged-release:
+    if: ${{ github.repository_owner == 'WillianRod' }}
+    needs:
+      - release-windows
+      - release-macos
+    name: Release ODeck
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: Download Windows Release
+        uses: actions/download-artifact@v3
+        with:
+          name: ODeck-Windows
+      
+      - name: Download MacOS Release
+        uses: actions/download-artifact@v3
+        with:
+          name: ODeck-MacOS
+
+      - name: Create the GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false
+          files: |
+            *.dmg
+            *.exe
