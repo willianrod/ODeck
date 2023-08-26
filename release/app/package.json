@@ -1,6 +1,6 @@
 {
   "name": "odeck",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A free and open-source alternative to StreamDeck",
   "main": "./dist/main/main.js",
   "author": {
