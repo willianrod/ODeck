@@ -99,23 +99,29 @@ type HandlerItem = {
   readonly icon: string;
 };
 
-type HandlerInputValues<T> = {
+type HandlerInput = {
   readonly label: string;
   readonly description: string;
   readonly type: string;
-  readonly props: InputProp & T;
+  readonly name: string;
+  readonly defaultValue: string;
+  readonly props: Record<string, unknown>;
 };
 
-type HandlerInput<T> = [HandlerInputValues<T>] | [];
-
-interface HandlerConfig<T> {
+interface HandlerConfig {
   readonly groupKey: string;
   readonly id: string;
+  readonly defaultActive: boolean;
+  readonly config: HandlerInput[];
   handlers: Partial<{
     [key in KeyTypes]: HandlerItem;
   }>;
-  readonly config: [];
   inputs: Partial<{
-    [key in KeyTypes]: HandlerInput<T>;
+    [key in KeyTypes]: HandlerInput[];
   }>;
+}
+
+interface HandlerData {
+  id: string;
+  data: Record<string, unknown>;
 }

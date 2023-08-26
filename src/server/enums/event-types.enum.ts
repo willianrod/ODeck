@@ -104,6 +104,10 @@ const EventTypes = {
      */
     SET: 'SET_IPS',
   },
+  HANDLERS: {
+    SET: 'SET_HANDLERS_DATA',
+    UPDATE: 'UPDATE_HANDLERS_DATA',
+  },
 };
 
 export default EventTypes;

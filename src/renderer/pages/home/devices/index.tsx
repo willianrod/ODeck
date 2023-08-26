@@ -61,20 +61,14 @@ const Devices = () => {
   return (
     <Flex
       flexDir="column"
-      w="100vw"
-      h="100vh"
+      w="100%"
+      h="100%"
       alignItems="center"
+      p={4}
+      borderRadius={4}
       overflow="auto"
     >
-      <Box
-        height="100%"
-        flex={1}
-        bgColor="gray.900"
-        borderRadius={8}
-        w="calc(100% - 32px)"
-        p={4}
-        my={4}
-      >
+      <Box bgColor="gray.900" w="100%" borderRadius={10} p={4}>
         <Flex flexDir="row" alignItems="center" justifyContent="space-between">
           <Heading size="sm">{t('select_device')}</Heading>
           <CreatePageButton />

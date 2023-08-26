@@ -3,14 +3,9 @@ import { HandlerConfig, KeyPressEvent } from 'interfaces';
 import Handler from './common/handler';
 import KeyTypes from '../enums/keys.enum';
 
-interface InputProp {
-  readonly maxLength: number;
-  readonly defaultValue: string;
-  readonly accept: string;
-}
-
-export const config: HandlerConfig<InputProp> = {
+export const config: HandlerConfig = {
   groupKey: 'system',
+  defaultActive: true,
   id: 'sound',
   handlers: {
     [KeyTypes.SOUND]: {
@@ -30,11 +25,11 @@ export const config: HandlerConfig<InputProp> = {
       {
         label: 'sound.input.label_1',
         description: 'sound.input.description_1',
+        name: 'soundPath',
         type: 'file',
+        defaultValue: '',
         props: {
-          name: 'soundPath',
           maxLength: 500,
-          defaultValue: '',
           accept: '.mp3,.wav',
         },
       },

@@ -12,6 +12,7 @@ import EventTypes from './enums/event-types.enum';
 
 import registerHandlers from './handlers';
 import { IButtonKey } from '../interfaces';
+import HandlersController from './controllers/handlers';
 
 const signals = new EventEmitter();
 
@@ -39,6 +40,7 @@ const startServer = () => {
     const keysController = KeysController(socket, io);
     const pagesController = PagesController(socket, io);
     const ipsController = IpsController(socket, io);
+    const handlersController = HandlersController(socket, io);
 
     socket.on(EventTypes.SYSTEM.GET, () => {
       socket.emit(EventTypes.SYSTEM.SET, Array.from(configs.values()));
@@ -68,6 +70,8 @@ const startServer = () => {
     socket.on(EventTypes.KEYS.DELETE, keysController.deleteKey);
 
     socket.on(EventTypes.KEYS.UPDATE, keysController.updateKey);
+
+    socket.on(EventTypes.HANDLERS.UPDATE, handlersController.updateHandlers);
 
     socket.on(EventTypes.KEYS.PRESS, (keyPressed: IButtonKey) => {
       signals.emit(keyPressed.type, { keyPressed, socket });

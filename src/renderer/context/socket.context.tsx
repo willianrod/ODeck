@@ -55,7 +55,7 @@ const SocketProvider = ({ children }: { children: ReactElement }) => {
     socket.on(EventTypes.IPS.SET, (data: Array<string>) => {
       dispatch(setIps(data));
     });
-    socket.on(EventTypes.SYSTEM.SET, (data: Array<HandlerConfig<unknown>>) => {
+    socket.on(EventTypes.SYSTEM.SET, (data: Array<HandlerConfig>) => {
       dispatch(setConfig(data));
     });
   }, [selectedDevice, dispatch]);

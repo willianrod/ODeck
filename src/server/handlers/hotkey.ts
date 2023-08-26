@@ -8,9 +8,10 @@ interface InputProp {
   readonly maxLength: number;
 }
 
-export const config: HandlerConfig<InputProp> = {
+export const config: HandlerConfig = {
   groupKey: 'system',
   id: 'hotkey',
+  defaultActive: true,
   handlers: {
     [KeyTypes.HOTKEY]: {
       title: 'hotkey.title',
@@ -30,9 +31,9 @@ export const config: HandlerConfig<InputProp> = {
         label: 'hotkey.input.label_1',
         description: 'hotkey.input.description_1',
         type: 'hotkey',
+        defaultValue: '',
+        name: 'bindings',
         props: {
-          defaultValue: '',
-          name: 'bindings',
           maxLength: 200,
         },
       },

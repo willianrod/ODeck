@@ -4,13 +4,9 @@ import Handler from './common/handler';
 import KeyTypes from '../enums/keys.enum';
 import MediaKeys from '../enums/media-keys.enum';
 
-interface InputProp {
-  readonly maxLength: number;
-  readonly defaultValue: string;
-}
-
-export const config: HandlerConfig<InputProp> = {
+export const config: HandlerConfig = {
   groupKey: 'media',
+  defaultActive: true,
   id: 'media',
   handlers: {
     [KeyTypes.PLAY]: {

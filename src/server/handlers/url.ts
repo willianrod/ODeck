@@ -3,13 +3,9 @@ import { HandlerConfig, KeyPressEvent } from 'interfaces';
 import Handler from './common/handler';
 import KeyTypes from '../enums/keys.enum';
 
-interface InputProp {
-  readonly maxLength: number;
-  readonly defaultValue: string;
-}
-
-export const config: HandlerConfig<InputProp> = {
+export const config: HandlerConfig = {
   groupKey: 'system',
+  defaultActive: true,
   id: 'url',
   handlers: {
     [KeyTypes.URL]: {
@@ -29,11 +25,11 @@ export const config: HandlerConfig<InputProp> = {
       {
         label: 'url.input.label_1',
         description: 'url.input.description_1',
+        name: 'url',
         type: 'string',
+        defaultValue: '',
         props: {
-          name: 'url',
           maxLength: 500,
-          defaultValue: '',
         },
       },
     ],

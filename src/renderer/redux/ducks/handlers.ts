@@ -2,7 +2,7 @@ import { HandlerConfig } from 'interfaces';
 import EventTypes from 'server/enums/event-types.enum';
 import { Socket } from 'socket.io-client';
 
-const initialState: Array<HandlerConfig<unknown>> = [];
+const initialState: Array<HandlerConfig> = [];
 
 // Types
 const Types = {
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action: any) => {
 };
 
 // Actions
-export const setConfig = (config: Array<HandlerConfig<unknown>>) => {
+export const setConfig = (config: Array<HandlerConfig>) => {
   return { type: Types.SET_CONFIG, config };
 };
 

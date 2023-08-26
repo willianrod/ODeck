@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   Button,
   Grid,
@@ -20,84 +20,14 @@ import KeyTypes from 'server/enums/keys.enum';
 import {
   HandlerConfig,
   HandlerInput,
-  HandlerInputValues,
   IActionConfig,
   IButtonKey,
-  IPage,
 } from 'interfaces';
 import { deleteKey, updateKey } from 'renderer/redux/ducks/keys';
 import { MdDragIndicator } from 'react-icons/md';
 import styles from './home.module.css';
-import SelectInput from '../Form/SelectInput';
 import ColorInput from '../Form/ColorInput';
-import InputBindings from '../Form/InputBindings';
-import FileInput from '../Form/FileInput';
-
-const HandlerInputs: React.FC<{
-  inputs: [HandlerInputValues<unknown>] | never[];
-}> = ({ inputs }) => {
-  const { t } = useTranslation('handlers');
-  const { pages } = useSelector((state: any) => ({
-    pages: state.pages.items,
-  }));
-
-  const renderInputByType = ({
-    type,
-    props,
-    description,
-    label,
-  }: HandlerInputValues<unknown>) => {
-    switch (type) {
-      case 'file':
-        return (
-          <FileInput
-            name={`actionConfig.${props.name}`}
-            label={t(label)}
-            defaultValue={props.defaultValue}
-            maxLength={props.maxLength}
-            accept={props.accept}
-            hint={t(description)}
-            size="md"
-          />
-        );
-      case 'hotkey':
-        return (
-          <InputBindings
-            name={`actionConfig.${props.name}`}
-            label={t(label)}
-            defaultValue={props.defaultValue}
-            maxLength={props.maxLength}
-            hint={t(description)}
-            size="md"
-          />
-        );
-      case 'pages':
-        return (
-          <SelectInput
-            name={`actionConfig.${props.name}`}
-            label={t(label)}
-            options={pages?.map((p: IPage) => ({ key: p.id, label: p.name }))}
-          />
-        );
-      case 'string':
-        return (
-          <TextInput
-            size="md"
-            name={`actionConfig.${props.name}`}
-            label={t(label)}
-            defaultValue={props.defaultValue}
-            maxLength={props.maxLength}
-            hint={t(description)}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
-
-  return <>{inputs?.map(renderInputByType)}</>;
-};
+import HandlerInputs from '../handler-input';
 
 const Editor = () => {
   const { t } = useTranslation('editor');
@@ -119,10 +49,7 @@ const Editor = () => {
   const inputs = useMemo(() => {
     if (!currentKey?.type) return [];
     const tempInputs = handlers.reduce(
-      (
-        acc: { [key in KeyTypes]: HandlerInput<unknown> },
-        curr: HandlerConfig<unknown>
-      ) => {
+      (acc: { [key in KeyTypes]: HandlerInput }, curr: HandlerConfig) => {
         return {
           ...acc,
           ...curr.inputs,
@@ -131,7 +58,7 @@ const Editor = () => {
       {}
     );
 
-    return tempInputs[currentKey.type] as HandlerInput<unknown>;
+    return tempInputs[currentKey.type] as HandlerInput[];
   }, [currentKey, handlers]);
 
   const handleSubmit = useCallback(
@@ -194,7 +121,7 @@ const Editor = () => {
             </GridItem>
           </Grid>
 
-          <HandlerInputs inputs={inputs} />
+          <HandlerInputs prefix="actionConfig" inputs={inputs} />
 
           <div className={styles.buttons}>
             <Button onClick={handleDeleteKey} color="red.500">
@@ -260,10 +187,10 @@ const Editor = () => {
     const values = {} as { [key: string]: unknown };
     inputs?.forEach((input) => {
       if (!currentKey?.actionConfig)
-        values[input.props.name] = input.props.defaultValue;
+        values[input.name] = input.props.defaultValue;
       else
-        values[input.props.name] =
-          currentKey.actionConfig[input.props.name as keyof IActionConfig] ||
+        values[input.name] =
+          currentKey.actionConfig[input.name as keyof IActionConfig] ||
           input.props.defaultValue;
     });
 

@@ -10,22 +10,27 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { HandlerConfig } from 'interfaces';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import Form from 'renderer/components/Form';
 import SwitchInput from 'renderer/components/Form/SwitchInput';
+import HandlerInputs from 'renderer/components/handler-input';
+import { SocketContext } from 'renderer/context/socket.context';
+import EventTypes from 'server/enums/event-types.enum';
 
 const PluginsSettingsPage = () => {
   const { t } = useTranslation('handlers');
   const handlers = useSelector(
-    (state: any) => state.handlers as HandlerConfig<unknown>[]
+    (state: any) => state.handlers as HandlerConfig[]
   );
+
+  const { socket } = useContext(SocketContext);
 
   const form = useForm();
 
-  const renderKeyTypes = (item: HandlerConfig<unknown>) => {
+  const renderKeyTypes = (item: HandlerConfig) => {
     return (
       <AccordionItem key={item.id} padding={4} borderColor="gray.800">
         <AccordionButton borderRadius={8} backgroundColor="gray.800" zIndex={4}>
@@ -46,14 +51,19 @@ const PluginsSettingsPage = () => {
             <Text>{t('active')}</Text>
             <SwitchInput name={`${item.id}.active`} />
           </Flex>
+          <HandlerInputs prefix={item.id} inputs={item.config} />
         </AccordionPanel>
       </AccordionItem>
     );
   };
 
-  const handleSubmit = useCallback((values: FieldValues) => {
-    console.log(values);
-  }, []);
+  const handleSubmit = useCallback(
+    (values: FieldValues) => {
+      console.log(values);
+      socket.emit(EventTypes.HANDLERS.UPDATE, values);
+    },
+    [socket]
+  );
 
   return (
     <Flex

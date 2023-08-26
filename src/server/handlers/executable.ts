@@ -5,14 +5,9 @@ import KeyTypes from '../enums/keys.enum';
 
 const exec = require('child_process').execFile;
 
-interface InputProp {
-  readonly maxLength: number;
-  readonly defaultValue: string;
-  readonly accept: string;
-}
-
-export const config: HandlerConfig<InputProp> = {
+export const config: HandlerConfig = {
   groupKey: 'system',
+  defaultActive: true,
   id: 'executable',
   handlers: {
     [KeyTypes.EXECUTABLE]: {
@@ -26,17 +21,28 @@ export const config: HandlerConfig<InputProp> = {
       },
     },
   },
-  config: [],
+  config: [
+    {
+      label: 'executable.config.label_1',
+      description: 'executable.config.description_1',
+      type: 'string',
+      name: 'secret',
+      defaultValue: '',
+      props: {
+        type: 'password',
+      },
+    },
+  ],
   inputs: {
     [KeyTypes.EXECUTABLE]: [
       {
         label: 'executable.input.label_1',
         description: 'executable.input.description_1',
         type: 'file',
+        name: 'exePath',
+        defaultValue: '',
         props: {
-          name: 'exePath',
           maxLength: 500,
-          defaultValue: '',
           accept: '.exe',
         },
       },

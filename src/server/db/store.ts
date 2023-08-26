@@ -1,16 +1,16 @@
 import ElectronStore from 'electron-store';
-import { IButtonKey, IDevice, IPage } from 'interfaces';
+import { HandlerData, IButtonKey, IDevice, IPage } from 'interfaces';
 import DataTypes from '../enums/data-types.enum';
 
 export const STORE = new ElectronStore({
-  defaults: { devices: [], pages: [], keys: [] },
+  defaults: { devices: [], pages: [], keys: [], handlers: [] },
   // migrations: {
   //   '0.0.1': (store) => {
   //   },
   // },
 });
 
-type Type = IPage | IDevice | IButtonKey;
+type Type = IPage | IDevice | IButtonKey | HandlerData;
 
 class Store {
   _getAll(type: DataTypes) {

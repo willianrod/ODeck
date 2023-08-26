@@ -18,9 +18,9 @@ const Sidebar = () => {
   const handlers = useSelector((state: any) => state.handlers);
   const { t } = useTranslation('handlers');
 
-  const groupedHandlers = useMemo<Map<string, HandlerConfig<unknown>[]>>(() => {
+  const groupedHandlers = useMemo<Map<string, HandlerConfig[]>>(() => {
     const group = new Map();
-    handlers?.forEach((handler: HandlerConfig<unknown>) => {
+    handlers?.forEach((handler: HandlerConfig) => {
       if (!group.get(handler.groupKey)) {
         group.set(handler.groupKey, [handler]);
       } else {
@@ -33,7 +33,7 @@ const Sidebar = () => {
 
   const renderKeyTypes = ([groupKey, handlersGroup]: [
     string,
-    HandlerConfig<unknown>[]
+    HandlerConfig[]
   ]) => {
     return (
       <AccordionItem key={groupKey} padding={4} borderColor="gray.800">

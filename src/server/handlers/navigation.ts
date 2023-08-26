@@ -16,12 +16,9 @@ const getDeviceByPageId = (pageId: string) => {
   return device;
 };
 
-interface InputProp {
-  readonly defaultValue: string;
-}
-
-export const config: HandlerConfig<InputProp> = {
+export const config: HandlerConfig = {
   groupKey: 'deck',
+  defaultActive: true,
   id: 'navigation',
   handlers: {
     [KeyTypes.NAVIGATE]: {
@@ -52,10 +49,9 @@ export const config: HandlerConfig<InputProp> = {
         label: 'navigate.input.label_1',
         description: 'navigate.input.description_1',
         type: 'pages',
-        props: {
-          defaultValue: '',
-          name: 'pageId',
-        },
+        defaultValue: '',
+        name: 'pageId',
+        props: {},
       },
     ],
     [KeyTypes.GO_BACK]: [],
