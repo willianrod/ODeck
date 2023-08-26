@@ -1,6 +1,7 @@
 {
   "delete":"Deletar",
-  "warn":"Você realmente quer deletar esse dispositivo?",
+  "description": "Esta ação não pode ser desfeita.",
+  "title":"Você realmente quer deletar esse dispositivo?",
   "cancel":"Não",
   "confirm":"Sim"
 }

@@ -1,50 +1,69 @@
-import { Grid, GridItem } from '@chakra-ui/react';
-import Editor from 'renderer/components/editor';
-import Header from 'renderer/components/header';
-import KeyPad from 'renderer/components/keypad';
-import Sidebar from 'renderer/components/sidebar';
+import { Button, Divider, Flex, Icon } from '@chakra-ui/react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { MdExtension, MdInfo, MdPhoneAndroid } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import overlay from '../../public/logo.png';
 
-const Home = () => {
+const SIDEBAR_ITEMS = [
+  {
+    icon: MdPhoneAndroid,
+    label: 'sidebar.devices',
+    path: '/',
+  },
+  {
+    icon: MdExtension,
+    label: 'sidebar.plugins',
+    path: '/plugins',
+  },
+  {
+    icon: MdInfo,
+    label: 'sidebar.about',
+    path: '/about',
+  },
+] as const;
+
+const HomePage = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
-    <Grid
-      h="100vh"
-      w="100vw"
-      templateRows="repeat(2, 1fr)"
-      templateColumns="repeat(12, 1fr)"
-    >
-      <GridItem
-        colSpan={9}
-        display="flex"
+    <Flex flexDir="row" w="100vw" h="100vh" alignItems="center">
+      <Flex
         flexDir="column"
-        justifyContent="center"
-        alignItems="center"
-        backgroundColor="gray.800"
-        borderBottomWidth="1px"
-        borderBottomColor="gray.800"
-      >
-        <Header />
-        <KeyPad />
-      </GridItem>
-      <GridItem
-        rowSpan={2}
-        colSpan={3}
-        backgroundColor="gray.900"
+        width="300px"
+        bgColor="gray.900"
+        height="100%"
         overflow="auto"
-        borderLeftWidth="1px"
-        borderLeftColor="gray.800"
+        padding="10px"
       >
-        <Sidebar />
-      </GridItem>
-      <GridItem
-        colSpan={9}
-        overflow="auto"
-        backgroundColor="gray.900"
-        padding={4}
-      >
-        <Editor />
-      </GridItem>
-    </Grid>
+        <Flex mb={3} alignItems="center" gap={3} justifyContent="center">
+          <img width="64px" height="64px" src={overlay} alt="logo" />
+        </Flex>
+        <Divider mb={3} />
+        <Flex gap={3} flexDir="column">
+          {SIDEBAR_ITEMS.map((item) => (
+            <Button
+              leftIcon={<Icon as={item.icon} />}
+              width="100%"
+              isActive={location.pathname === item.path}
+              onClick={() => navigate(item.path)}
+              bgColor="gray.800"
+              _hover={{
+                bgColor: 'gray.700',
+              }}
+              _active={{
+                bgColor: 'gray.600',
+              }}
+            >
+              {t(item.label)}
+            </Button>
+          ))}
+        </Flex>
+      </Flex>
+      <Outlet />
+    </Flex>
   );
 };
 
-export default Home;
+export default HomePage;

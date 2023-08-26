@@ -1,8 +1,13 @@
-import { FormControl, InputGroup, Select, SelectProps } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  InputGroup,
+  Select,
+  SelectProps,
+} from '@chakra-ui/react';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import FormError from '../FormError';
-import FormLabel from '../FormLabel';
 
 interface SelectOptions {
   key: string | number;
@@ -30,7 +35,7 @@ const SelectInput: React.FC<SelectInputProps & SelectProps> = ({
 
   return (
     <FormControl>
-      <FormLabel required={required}>{label}</FormLabel>
+      <FormLabel color="white">{label}</FormLabel>
       <InputGroup>
         <Select
           data-testid={name}

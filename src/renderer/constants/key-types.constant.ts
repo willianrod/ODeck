@@ -17,6 +17,7 @@ import {
   MdNavigateBefore,
   MdNavigateNext,
 } from 'react-icons/md';
+
 import { IKeyType } from 'interfaces';
 import MediaKeys from 'server/enums/media-keys.enum';
 import i18n from 'renderer/i18n';

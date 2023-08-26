@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/layout';
+import { Box, Flex, Grid } from '@chakra-ui/layout';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { IDevice } from 'interfaces';
@@ -21,30 +21,27 @@ const KeyPad = () => {
   );
 
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      h={KEYPAD_SIZE_IN_PIXELS}
-      w="100%"
-      overflow="auto"
-    >
-      <Box
-        display="grid"
-        gridTemplateColumns={`repeat(${device.amountHorizontal}, minmax(${KEY_SIZE_IN_PIXELS}px, 1fr))`}
-        gridTemplateRows={`repeat(${device.amountVertical}, minmax(${KEY_SIZE_IN_PIXELS}px, 1fr))`}
-        userSelect="none"
-        height={
-          device.amountVertical * KEY_SIZE_IN_PIXELS > KEYPAD_SIZE_IN_PIXELS
-            ? KEYPAD_SIZE_IN_PIXELS
-            : undefined
-        }
+    <Box overflow="auto" height="100%">
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        h={device.amountVertical * KEY_SIZE_IN_PIXELS + 100}
+        w="100%"
         overflow="auto"
       >
-        {buttons.map((button) => {
-          return <Key key={button.id} button={button} />;
-        })}
-      </Box>
-    </Flex>
+        <Box
+          display="grid"
+          gridTemplateColumns={`repeat(${device.amountHorizontal}, minmax(${KEY_SIZE_IN_PIXELS}px, 1fr))`}
+          gridTemplateRows={`repeat(${device.amountVertical}, minmax(${KEY_SIZE_IN_PIXELS}px, 1fr))`}
+          userSelect="none"
+          height="fit-content"
+        >
+          {buttons.map((button) => {
+            return <Key key={button.id} button={button} />;
+          })}
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 

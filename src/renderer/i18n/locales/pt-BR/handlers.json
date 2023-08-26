@@ -1,0 +1,68 @@
+{
+  "group": {
+    "media": "Mídia",
+    "deck": "Deck",
+    "system": "Sistema"
+  },
+  "hotkey": {
+    "title": "Atalho",
+    "description": "Simula uma combinação de teclas para invocar um atalho de teclado.",
+    "label": "Atalho",
+    "input": {
+      "label_1": "Atalho",
+      "description_1": "Clique em 'Capturar' e pressione a combinação de teclas que deseja acionar quando a tecla for pressionada."
+    }
+  },
+  "navigate": {
+    "title": "Navegar",
+    "description": "Navegue para outra página.",
+    "label": "Ir para...",
+    "input": {
+      "label_1": "Página",
+      "description_1": "Selecione a página para a qual deseja navegar."
+    }
+  },
+  "go_back": {
+    "title": "Voltar",
+    "description": "Voltar para a página anterior.",
+    "label": "Voltar"
+  },
+  "url": {
+    "title": "URL",
+    "description": "Abra um URL no seu navegador padrão.",
+    "label": "Abrir link",
+    "input": {
+      "label_1": "URL",
+      "description_1": "Digite o URL que deseja abrir quando o botão for pressionado."
+    }
+  },
+  "media": {
+    "media": "Mídia",
+    "play": "Reproduzir",
+    "pause": "Pausar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "stop": "Parar",
+    "mute": "Mudo",
+    "volume_plus": "Aumentar volume",
+    "volume_minus": "Diminuir volume"
+  },
+  "executable": {
+    "title": "Executar aplicativo",
+    "description": "Abra um aplicativo instalado no seu computador.",
+    "label": "Abrir aplicativo",
+    "input": {
+      "label_1": "Executável",
+      "description_1": "Selecione o arquivo executável que deseja rodar quando o botão for pressionado."
+    }
+  },
+  "sound": {
+    "title": "Reproduzir som",
+    "label": "Reproduzir som",
+    "description": "Permite reproduzir um arquivo .mp3 ou .wav toda vez que o botão for pressionado.",
+    "input": {
+      "label_1": "Som",
+      "description_1": "Selecione o arquivo que deseja reproduzir quando pressionar o botão."
+    }
+  }
+}

@@ -1,10 +1,14 @@
-import { FormLabel as ChakraFormLabel } from '@chakra-ui/react';
-import React from 'react';
+import {
+  FormLabel as ChakraFormLabel,
+  FormLabelProps as BaseFormLabelProps,
+} from '@chakra-ui/react';
+import React, { ReactElement } from 'react';
 import styles from './styles.module.scss';
 
-interface FormLabelProps {
+interface FormLabelProps extends BaseFormLabelProps {
   // eslint-disable-next-line react/require-default-props
   required?: boolean;
+  children: string | ReactElement | undefined;
 }
 
 const FormLabel: React.FC<FormLabelProps> = ({

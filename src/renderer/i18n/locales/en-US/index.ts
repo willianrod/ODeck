@@ -3,13 +3,15 @@ import createPageButton from './create-page-button.json';
 import deleteWarn from './delete-warn.json';
 import editor from './editor.json';
 import header from './header.json';
-import keys from './keys.json';
+import handlers from './handlers.json';
+import about from './about.json';
 
 export default {
+  about,
   common,
   editor,
   header,
-  keys,
+  handlers,
   'create-page-button': createPageButton,
   'delete-warn': deleteWarn,
 };

@@ -7,11 +7,14 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { I18nextProvider } from 'react-i18next';
 import SocketProvider from './context/socket.context';
 import './App.css';
-import Home from './pages/home';
+import Device from './pages/device';
 import theme from './theme';
-import Start from './pages/start';
+import Devices from './pages/home/devices';
 import store from './redux/store';
 import i18n from './i18n';
+import HomePage from './pages/home';
+import PluginsPage from './pages/home/plugins';
+import AboutPage from './pages/home/about';
 
 const AppRouter = () => {
   const { setColorMode } = useColorMode();
@@ -22,8 +25,12 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Start />} />
-        <Route path="/dashboard" element={<Home />} />
+        <Route path="/" element={<HomePage />}>
+          <Route index element={<Devices />} />
+          <Route path="plugins" element={<PluginsPage />} />
+          <Route path="about" element={<AboutPage />} />
+        </Route>
+        <Route path="dashboard" element={<Device />} />
       </Routes>
     </Router>
   );

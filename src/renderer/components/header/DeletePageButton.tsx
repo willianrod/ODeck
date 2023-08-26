@@ -20,7 +20,7 @@ const DeletePageButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const dispatch = useDispatch();
-  const cancelRef = useRef();
+  const cancelRef = useRef<any>();
 
   const { currentPage } = useSelector((state: any) => ({
     currentPage: state.pages.currentPage,

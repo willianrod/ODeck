@@ -1,4 +1,15 @@
 const EventTypes = {
+  SYSTEM: {
+    /**
+     * Event to set handlers config
+     */
+    SET: 'SET_CONFIG',
+
+    /**
+     * Event used to request all handlers config
+     */
+    GET: 'GET_CONFIG',
+  },
   DEVICES: {
     /**
      * Event used to select a device
@@ -92,6 +103,11 @@ const EventTypes = {
      * Event used to broadcast all available ip adresses
      */
     SET: 'SET_IPS',
+  },
+  HANDLERS: {
+    GET: 'GET_HANDLERS_DATA',
+    SET: 'SET_HANDLERS_DATA',
+    UPDATE: 'UPDATE_HANDLERS_DATA',
   },
 };
 

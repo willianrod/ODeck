@@ -8,7 +8,7 @@ import {
   FormLabel,
   Button,
 } from '@chakra-ui/react';
-import useRecordKeybindings from 'hooks/useRecordKeybindings';
+import useRecordKeybindings from 'renderer/hooks/useRecordKeybindings';
 
 import React, { useCallback, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
