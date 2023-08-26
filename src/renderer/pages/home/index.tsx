@@ -1,6 +1,5 @@
 import { Button, Divider, Flex, Icon } from '@chakra-ui/react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import i18n from 'renderer/i18n';
 import { MdExtension, MdPhoneAndroid, MdSettings } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import overlay from '../../public/logo.png';
@@ -8,18 +7,18 @@ import overlay from '../../public/logo.png';
 const SIDEBAR_ITEMS = [
   {
     icon: MdPhoneAndroid,
-    label: i18n.t('devices'),
+    label: 'sidebar.devices',
     path: '/',
   },
   {
     icon: MdExtension,
-    label: i18n.t('plugins'),
+    label: 'sidebar.plugins',
     path: '/plugins',
   },
   {
     icon: MdSettings,
-    label: i18n.t('deck'),
-    path: '/deck',
+    label: 'sidebar.about',
+    path: '/about',
   },
 ] as const;
 
@@ -57,7 +56,7 @@ const HomePage = () => {
                 bgColor: 'gray.600',
               }}
             >
-              {item.label}
+              {t(item.label)}
             </Button>
           ))}
         </Flex>

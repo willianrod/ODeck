@@ -32,9 +32,9 @@ import HandlerInputs from '../handler-input';
 const Editor = () => {
   const { t } = useTranslation('editor');
 
-  const { currentKey, handlers } = useSelector((state: any) => ({
+  const { currentKey, configs } = useSelector((state: any) => ({
     currentKey: state.keys.currentKey as IButtonKey,
-    handlers: state.handlers,
+    configs: state.handlers.configs,
   }));
 
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const Editor = () => {
 
   const inputs = useMemo(() => {
     if (!currentKey?.type) return [];
-    const tempInputs = handlers.reduce(
+    const tempInputs = configs.reduce(
       (acc: { [key in KeyTypes]: HandlerInput }, curr: HandlerConfig) => {
         return {
           ...acc,
@@ -59,7 +59,7 @@ const Editor = () => {
     );
 
     return tempInputs[currentKey.type] as HandlerInput[];
-  }, [currentKey, handlers]);
+  }, [currentKey, configs]);
 
   const handleSubmit = useCallback(
     ({ pageId, ...values }: FieldValues) => {
@@ -202,7 +202,7 @@ const Editor = () => {
       hideLabel: currentKey?.hideLabel || '',
       actionConfig: values,
     });
-  }, [form, currentKey, handlers, inputs]);
+  }, [form, currentKey, configs, inputs]);
 
   if (!currentKey?.id) return renderEmptyContent();
 

@@ -105,6 +105,7 @@ type HandlerInput = {
   readonly type: string;
   readonly name: string;
   readonly defaultValue: string;
+  readonly secret?: boolean;
   readonly props: Record<string, unknown>;
 };
 

@@ -27,7 +27,7 @@ const startServer = () => {
     },
   });
 
-  const { configs } = registerHandlers({
+  let registeredHandlers = registerHandlers({
     io,
     signals,
   });
@@ -42,8 +42,8 @@ const startServer = () => {
     const ipsController = IpsController(socket, io);
     const handlersController = HandlersController(socket, io);
 
-    socket.on(EventTypes.SYSTEM.GET, () => {
-      socket.emit(EventTypes.SYSTEM.SET, Array.from(configs.values()));
+    socket.on(EventTypes.HANDLERS.GET, () => {
+      handlersController.sendCurrentHandlersConfig(registeredHandlers);
     });
 
     // Devices
@@ -71,7 +71,13 @@ const startServer = () => {
 
     socket.on(EventTypes.KEYS.UPDATE, keysController.updateKey);
 
-    socket.on(EventTypes.HANDLERS.UPDATE, handlersController.updateHandlers);
+    socket.on(EventTypes.HANDLERS.UPDATE, (payload) => {
+      handlersController.updateHandlers(payload);
+      signals.removeAllListeners();
+      registeredHandlers = registerHandlers({ io, signals });
+
+      handlersController.sendCurrentHandlersConfig(registeredHandlers);
+    });
 
     socket.on(EventTypes.KEYS.PRESS, (keyPressed: IButtonKey) => {
       signals.emit(keyPressed.type, { keyPressed, socket });

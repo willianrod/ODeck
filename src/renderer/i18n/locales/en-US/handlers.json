@@ -1,11 +1,14 @@
 {
-  "settings": {
-    "executable": "Executable",
-    "hotkey": "Hotkey",
-    "media": "Media",
-    "navigation": "Navigation",
-    "sound": "Sound",
-    "url": "URL"
+  "handlers": {
+    "active": "Active",
+    "executable": {
+      "title": "Executable"
+    },
+    "hotkey": { "title": "Hotkey" },
+    "media": { "title": "Media" },
+    "navigation": { "title": "Navigation" },
+    "sound": { "title": "Sound" },
+    "url": { "title": "URL" }
   },
   "group": {
     "media": "Media",

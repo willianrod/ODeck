@@ -20,7 +20,9 @@ const Sidebar = () => {
 
   const groupedHandlers = useMemo<Map<string, HandlerConfig[]>>(() => {
     const group = new Map();
-    handlers?.forEach((handler: HandlerConfig) => {
+    const { initialized, configs } = handlers;
+    configs?.forEach((handler: HandlerConfig) => {
+      if (!initialized.includes(handler.id)) return;
       if (!group.get(handler.groupKey)) {
         group.set(handler.groupKey, [handler]);
       } else {
@@ -66,7 +68,7 @@ const Sidebar = () => {
   };
 
   return (
-    <Accordion allowToggle bgColor="gray.900" h="100%">
+    <Accordion allowToggle bgColor="gray.900" h="100%" overflow="auto">
       {Array.from(groupedHandlers.entries()).map(renderKeyTypes)}
     </Accordion>
   );

@@ -105,6 +105,7 @@ const EventTypes = {
     SET: 'SET_IPS',
   },
   HANDLERS: {
+    GET: 'GET_HANDLERS_DATA',
     SET: 'SET_HANDLERS_DATA',
     UPDATE: 'UPDATE_HANDLERS_DATA',
   },

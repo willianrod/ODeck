@@ -4,8 +4,10 @@ import DeleteWarn from './delete-warn.json';
 import editor from './editor.json';
 import header from './header.json';
 import handlers from './handlers.json';
+import about from './about.json';
 
 export default {
+  about,
   common,
   editor,
   header,

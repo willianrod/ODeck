@@ -14,7 +14,7 @@ import store from './redux/store';
 import i18n from './i18n';
 import HomePage from './pages/home';
 import PluginsPage from './pages/home/plugins';
-import DeckSettingsPage from './pages/home/deck';
+import AboutPage from './pages/home/about';
 
 const AppRouter = () => {
   const { setColorMode } = useColorMode();
@@ -28,7 +28,7 @@ const AppRouter = () => {
         <Route path="/" element={<HomePage />}>
           <Route index element={<Devices />} />
           <Route path="plugins" element={<PluginsPage />} />
-          <Route path="deck" element={<DeckSettingsPage />} />
+          <Route path="about" element={<AboutPage />} />
         </Route>
         <Route path="dashboard" element={<Device />} />
       </Routes>

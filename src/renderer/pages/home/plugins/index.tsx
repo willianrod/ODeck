@@ -10,7 +10,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { HandlerConfig } from 'interfaces';
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -22,13 +22,18 @@ import EventTypes from 'server/enums/event-types.enum';
 
 const PluginsSettingsPage = () => {
   const { t } = useTranslation('handlers');
-  const handlers = useSelector(
-    (state: any) => state.handlers as HandlerConfig[]
-  );
+  const { configs, currentConfig } = useSelector((state: any) => ({
+    configs: state.handlers.configs as HandlerConfig[],
+    currentConfig: state.handlers.currentConfig as Record<string, unknown>,
+  }));
 
   const { socket } = useContext(SocketContext);
 
   const form = useForm();
+
+  useEffect(() => {
+    form.reset(currentConfig);
+  }, [form, currentConfig]);
 
   const renderKeyTypes = (item: HandlerConfig) => {
     return (
@@ -36,7 +41,7 @@ const PluginsSettingsPage = () => {
         <AccordionButton borderRadius={8} backgroundColor="gray.800" zIndex={4}>
           <Box flex="1" textAlign="left" fontWeight="bold">
             <Text display="flex" flexDir="row" alignItems="center">
-              {t(`settings.${item.id}`)}
+              {t(`handlers.${item.id}.title`)}
             </Text>
           </Box>
           <AccordionIcon />
@@ -48,7 +53,7 @@ const PluginsSettingsPage = () => {
           borderRadius={8}
         >
           <Flex w="100%" justifyContent="space-between" alignItems="center">
-            <Text>{t('active')}</Text>
+            <Text>{t('handlers.active')}</Text>
             <SwitchInput name={`${item.id}.active`} />
           </Flex>
           <HandlerInputs prefix={item.id} inputs={item.config} />
@@ -78,7 +83,7 @@ const PluginsSettingsPage = () => {
       <Form form={form} onSubmit={handleSubmit}>
         <Box bgColor="gray.900" w="100%" borderRadius={10}>
           <Accordion allowToggle h="100%" w="100%">
-            {handlers.map(renderKeyTypes)}
+            {configs.map(renderKeyTypes)}
           </Accordion>
           <Flex p={4} justifyContent="right">
             <Button type="submit">Save</Button>

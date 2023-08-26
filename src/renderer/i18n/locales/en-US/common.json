@@ -1,6 +1,10 @@
 {
   "app_name": "ODeck",
-  "welcome_to": "Welcome to",
+  "sidebar": {
+    "devices": "Devices",
+    "plugins": "Plugins",
+    "about": "About"
+  },
   "select": "Select",
   "select_device": "Select a device:",
   "help": "Help",

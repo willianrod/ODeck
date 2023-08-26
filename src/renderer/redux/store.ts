@@ -7,7 +7,10 @@ import rootReducer from './ducks';
 
 const ENDPOINT = 'http://localhost:3000';
 
-export const socket = socketIOClient(ENDPOINT);
+export const socket = socketIOClient(ENDPOINT, {
+  rejectUnauthorized: false,
+  secure: true,
+});
 
 const store = createStore(
   rootReducer,

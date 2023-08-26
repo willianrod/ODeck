@@ -21,18 +21,7 @@ export const config: HandlerConfig = {
       },
     },
   },
-  config: [
-    {
-      label: 'executable.config.label_1',
-      description: 'executable.config.description_1',
-      type: 'string',
-      name: 'secret',
-      defaultValue: '',
-      props: {
-        type: 'password',
-      },
-    },
-  ],
+  config: [],
   inputs: {
     [KeyTypes.EXECUTABLE]: [
       {
