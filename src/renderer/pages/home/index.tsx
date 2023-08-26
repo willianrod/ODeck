@@ -1,6 +1,6 @@
 import { Button, Divider, Flex, Icon } from '@chakra-ui/react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { MdExtension, MdPhoneAndroid, MdSettings } from 'react-icons/md';
+import { MdExtension, MdInfo, MdPhoneAndroid } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import overlay from '../../public/logo.png';
 
@@ -16,7 +16,7 @@ const SIDEBAR_ITEMS = [
     path: '/plugins',
   },
   {
-    icon: MdSettings,
+    icon: MdInfo,
     label: 'sidebar.about',
     path: '/about',
   },
