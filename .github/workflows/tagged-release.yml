@@ -7,7 +7,7 @@ on:
 
 jobs:
   release-windows:
-    if: ${{ github.repository_owner == 'WillianRod' }}
+    if: ${{ github.repository_owner == 'willianrod' }}
     name: Release for Windows
     runs-on: windows-latest
 
@@ -34,7 +34,7 @@ jobs:
           path: release/build/ODeck*.exe
 
   release-macos:
-    if: ${{ github.repository_owner == 'WillianRod' }}
+    if: ${{ github.repository_owner == 'willianrod' }}
     name: Release for MacOS
     runs-on: macos-latest
 
@@ -61,7 +61,7 @@ jobs:
           path: release/build/ODeck*.dmg
 
   tagged-release:
-    if: ${{ github.repository_owner == 'WillianRod' }}
+    if: ${{ github.repository_owner == 'willianrod' }}
     needs:
       - release-windows
       - release-macos
