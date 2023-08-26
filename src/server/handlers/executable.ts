@@ -16,7 +16,7 @@ export const config: HandlerConfig = {
       description: 'executable.description',
       defaults: {
         label: 'executable.label',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },

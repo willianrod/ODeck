@@ -14,7 +14,7 @@ export const config: HandlerConfig = {
       icon: 'MdPlayArrow',
       defaults: {
         label: 'media.play',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -23,7 +23,7 @@ export const config: HandlerConfig = {
       icon: 'MdPause',
       defaults: {
         label: 'media.pause',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -32,7 +32,7 @@ export const config: HandlerConfig = {
       icon: 'MdStop',
       defaults: {
         label: 'media.stop',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -41,7 +41,7 @@ export const config: HandlerConfig = {
       icon: 'MdSkipPrevious',
       defaults: {
         label: 'media.previous',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -50,7 +50,7 @@ export const config: HandlerConfig = {
       icon: 'MdSkipNext',
       defaults: {
         label: 'media.next',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -59,7 +59,7 @@ export const config: HandlerConfig = {
       icon: 'MdVolumeDown',
       defaults: {
         label: 'media.volume_minus',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -68,7 +68,7 @@ export const config: HandlerConfig = {
       icon: 'MdVolumeUp',
       defaults: {
         label: 'media.volume_plus',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -78,7 +78,7 @@ export const config: HandlerConfig = {
       icon: 'MdVolumeOff',
       defaults: {
         label: 'media.mute',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },

@@ -19,7 +19,7 @@ export const config: HandlerConfig = {
       description: 'hotkey.description',
       defaults: {
         label: 'hotkey.label',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },

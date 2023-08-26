@@ -27,7 +27,7 @@ export const config: HandlerConfig = {
       description: 'navigate.description',
       defaults: {
         label: 'navigate.label',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
@@ -37,7 +37,7 @@ export const config: HandlerConfig = {
       description: 'go_back.description',
       defaults: {
         label: 'go_back.label',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },

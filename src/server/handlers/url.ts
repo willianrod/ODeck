@@ -14,7 +14,7 @@ export const config: HandlerConfig = {
       description: 'url.description',
       defaults: {
         label: 'url.label',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },

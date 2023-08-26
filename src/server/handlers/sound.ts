@@ -14,7 +14,7 @@ export const config: HandlerConfig = {
       description: 'sound.description',
       defaults: {
         label: 'sound.label',
-        backgroundColor: '#000',
+        backgroundColor: 'transparent',
         color: '#fff',
       },
     },
