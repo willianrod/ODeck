@@ -1,6 +1,7 @@
 {
   "delete":"Delete",
-  "warn":"Do you really want to delete this device?",
+  "description": "This action can't be undone.",
+  "title":"Do you really want to delete this device?",
   "cancel":"No",
-  "confirm":"yes"
+  "confirm":"Yes"
 }
