@@ -1,108 +1,104 @@
-![image](https://user-images.githubusercontent.com/6539258/154814361-066e5010-40a8-4820-a706-ed9803a319a1.png)
-
 <div align="center">
-⚠️ ESTE SOFTWARE TODAVÍA ESTÁ EN ALPHA Y PUEDE CONTENER BUGS ⚠️
+  <img src="https://github.com/willianrod/ODeck/assets/6539258/058efe7e-6f92-4ae9-a1a6-a743722f0ea6" width="167px">
+  <br/>
+  <p>Mejora tu Experiencia de Streaming con ODeck: La Alternativa de Código Abierto a StreamDeck</p>
+  <p>Lee este README en otros idiomas: <a href="https://github.com/willianrod/ODeck/blob/main/README.md">English</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README-pt.md">Português</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md">Español</a></p>
 </div>
-  
-# Para usuarios
 
-ODeck es una alternativa gratuita y de código abierto a StreamDeck hecha con React, React Native, Electron, Socket.IO y algunas otras tecnologías. Le permite controlar fácilmente algunas funciones de su computadora con el poder de un toque en su teléfono inteligente.
+---
 
-Suele ser una alternativa más económica a StreamDeck porque puedes usar tu smartphone actual o limpiar el polvo de un dispositivo antiguo del fondo de tu cajón y darle otro propósito de vida a este dispositivo.
+## Acerca de
 
-## Este archivo también está disponible en:
+ODeck es una herramienta versátil y poderosa diseñada para mejorar tus transmisiones en vivo y aumentar la productividad. Más allá de atender a streamers de todos los niveles, ODeck extiende su funcionalidad más allá de las transmisiones, permitiendo que se adapte a diversas tareas de productividad. Inspirado en la idea de código abierto, la "O" en ODeck subraya su compromiso con la transparencia y la personalización. Dale un nuevo propósito a tu antiguo y descuidado teléfono inteligente transformándolo en una herramienta valiosa.
 
-- [Español](https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md)
-- [English](https://github.com/willianrod/ODeck/blob/main/README.md)
-- Português
+## Pila Tecnológica
 
-## SO compatibles
+- Electron
+- React
+- React Native
+- Socket.io
 
-Actualmente, ODeck aún no es compatible con todas las plataformas, pero debería serlo en un futuro próximo. Consulte la lista de los sistemas operativos compatibles actualmente.
+## Plataformas
 
-### Deck
+ODeck está disponible en las siguientes plataformas:
 
-- Android
-
-### Panel de administración
+### Plataformas Compatibles:
 
 - Windows
+- Mac
 
-## Características actuales
+### Aplicación Móvil:
 
-- Abrir una URL
-- Emite una combinación de teclas para invocar teclas de acceso rápido
-- Ejecutar un archivo EXE
-- Teclas de medios para interactuar con los medios que se reproducen en su sistema
-- Crear varias páginas
-- Reproducir cualquier sonido al presionar un botón
-- Navegar entre páginas
-- Empareje la aplicación con el código QR
+- [Android](https://play.google.com/store/apps/details?id=com.willianrod.odeck)
+- [iOS](https://apps.apple.com/br/app/odeck/id6463042332)
 
-## Próximas características
+## Personalización Ilimitada
 
-- Integración con OBS
-- Input de carga de imagen
-- Evitar el diseño roto con una cantidad de teclas personalizadas
-- Integración con Twitch
-- Agregar compatibilidad con Linux y MacOS para el panel de administración
-- Agregar compatibilidad con iOS para la aplicación ODeck
+ODeck ofrece un alto grado de personalización para satisfacer tus necesidades únicas. Crea dispositivos personalizados con diferentes diseños de teclas, lo que permite un control preciso sobre tus acciones. Personaliza cada tecla de las siguientes formas:
 
-### Vista previa del deck
+- Cambia el color de fondo
+- Ajusta el color del texto de la etiqueta
+- Agrega imágenes de fondo a las etiquetas
+- Oculta las etiquetas para mostrar solo imágenes de fondo
 
-https://github.com/willianrod/ODeck/assets/6539258/9c58dbb1-38f6-4602-b211-aecbfc8e4dff
+## Cómo Utilizar
 
-### Vista previa del panel de administración
+1. Descarga ODeck en tu computadora desde la [página de lanzamientos](https://github.com/willianrod/ODeck/releases), donde se harán disponibles todas las actualizaciones.
+2. Instala ODeck en tu dispositivo móvil.
+3. En tu computadora, crea un nuevo dispositivo, dale un nombre y establece la cantidad de teclas en vertical y horizontal.
+4. Una vez creado, haz clic en 'Seleccionar' para acceder a la pantalla de personalización del dispositivo y, en la esquina superior izquierda, haz clic en 'Vincular Deck'.
+5. Aparecerá una ventana emergente; si es necesario, selecciona la dirección IP de tu computadora.
+6. Abre la aplicación en tu dispositivo móvil y escanea el código QR que se muestra en tu computadora.
+7. Ahora puedes personalizar tu deck según tus necesidades.
 
-https://github.com/willianrod/ODeck/assets/6539258/51710202-d665-4f8c-bd7c-17c470e8e29b
+## Funcionalidades
 
-## Documentación
+ODeck ha sido sometido a un extenso proceso de mejora, lo que facilita la adición de nuevas funciones con un esfuerzo mínimo. A continuación, se muestra una lista de las funcionalidades admitidas actualmente:
 
-### Deck
+<details>
+<summary><strong>Deck</strong></summary>
 
-#### Navigación
+- **Navegar:** Te permite seleccionar y navegar entre las páginas de la aplicación.
+![Navegar](https://github.com/willianrod/ODeck/assets/6539258/4845e312-ce23-4415-ab96-4d61cf7ad771)
 
-Esta acción le permite navegar entre las páginas del deck
+- **Atrás:** Te permite regresar a las páginas accedidas previamente.
+![Atrás](https://github.com/willianrod/ODeck/assets/6539258/54a6e405-f88e-4f9b-93c0-7f4aa87981e6)
+</details>
 
-#### Regresar
+<details>
+<summary><strong>Sistema</strong></summary>
 
-Esta acción le permite ir a la página anterior mostrada
+- **Ejecutar Aplicación:** Ejecuta archivos ejecutables en tu computadora.
+![Ejecutar Aplicación](https://github.com/willianrod/ODeck/assets/6539258/ea0d6ec5-b93a-4998-a8a4-ff066ede016c)
 
-### Sistema
+- **Atajo:** Graba combinaciones de teclas como atajos.
+![Atajo](https://github.com/willianrod/ODeck/assets/6539258/6ba7d8cb-830b-446c-a82f-a75c390d401a)
 
-#### Ejecutar un EXE
+- **Reproducir Sonido:** Reproduce archivos de música .mp3 o .wav.
+![Reproducir Sonido](https://github.com/willianrod/ODeck/assets/6539258/a09bbf76-f6e6-4413-9ad5-961c2e96eaab)
 
-Esta acción, cuando se presiona, abre un archivo EXE específico. Para usarlo, debe colocar la ruta completa del archivo .exe deseado directamente en la entrada "Path". (Próximamente habrá un botón donde navegará para encontrar el archivo deseado)
+- **URL:** Abre URL con un solo clic.
+![URL](https://github.com/willianrod/ODeck/assets/6539258/ff70d8e4-acc0-43a5-a924-5c1578610963)
+</details>
 
-![image](https://user-images.githubusercontent.com/6539258/154814786-f08d6a64-04b2-4bfc-833f-6d68076fdf55.png)
+<details>
+<summary><strong>Medios</strong></summary>
 
-#### Hotkey
+Controla la reproducción de medios en tu computadora con las siguientes opciones:
 
-Con esta acción, podrá invocar cualquier tecla de acceso rápido en su máquina. Simula la pulsación de múltiples teclas en su máquina, como un teclado normal pero con solo un toque de su dedo.
+- Reproducir
+- Pausar
+- Detener
+- Anterior
+- Siguiente
+- Disminuir Volumen
+- Aumentar Volumen
+- Silenciar
 
-Por ahora, debe consultar esta documentación para ver todas las claves disponibles que puede usar (http://robotjs.io/docs/syntax#keyboard). Las teclas más comunes se enumeran a continuación.
+![Medios](https://github.com/willianrod/ODeck/assets/6539258/b4614ccb-62ef-4ee8-b17c-b389742cbb12)
+</details>
 
-- shift
-- control
-- alt
-- tab
-- right_shift
-- space
-- Los números y las letras se representan con sus propios valores. (a-z,0-9)
-
-Por ejemplo, si desea simular la pulsación de esta combinación de teclas (CTRL + ALT + SHIFT + 1), deberá reemplazar la tecla con su valor que se muestra en la documentación y separarlos con una coma.
-
-`control,shift,alt,1`
-
-![image](https://user-images.githubusercontent.com/6539258/154814990-24aa87ed-6bb4-4cd1-8836-c7ade215749b.png)
-
-Obs: En un futuro cercano habrá una entrada para registrar todas las teclas que presionó su tecla y usar estas teclas grabadas como valor.
-
-### Media
-
-Esta sección se explica por sí misma. Cuando se presiona, invocará la acción del botón.
-
-# Para contribuyentes
+# Contribuciones
 
 ## Instalación
 
@@ -114,28 +110,28 @@ cd ODeck
 yarn install
 ```
 
-## Comenzando el desarrollo
+## Iniciando el Desarrollo
 
-Inicie la aplicación en el ambiente `dev`:
+Inicia la aplicación en el entorno de desarrollo:
 
 ```bash
 yarn start
 ```
 
-## Crear un paquete para producción
+## Empaquetando para Producción
 
-Para crear un paquete para una plataforma local:
+Empaqueta la aplicación para tu plataforma local:
 
 ```bash
 yarn package
 ```
 
-## Maintainers
+## Mantenedores
 
 - [Willian Rodrigues](https://github.com/WillianRod)
 
 ## Licencia
 
-Créditos a [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) por hacer una plantilla increíble para crear una aplicación React basada en Electron.
+Un agradecimiento especial a [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) por proporcionar una excelente plantilla para crear aplicaciones React basadas en Electron.
 
 MIT © [ODeck](https://github.com/WillianRod/ODeck)
