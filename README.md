@@ -2,7 +2,7 @@
   <img src="https://github.com/willianrod/ODeck/assets/6539258/058efe7e-6f92-4ae9-a1a6-a743722f0ea6" width="167px">
   <br/>
   <p>Elevate Your Streaming Experience with ODeck: The Open Source Alternative to StreamDeck</p>
-  <p>Read this README in other languages: <a href="https://github.com/willianrod/ODeck/blob/main/README.md">English</a>, <a href="https://github.com/willianrod/ODeck/blob/main/README-pt.md">Português</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md">Español</a></p>
+  <p>Read this README in other languages: <a href="https://github.com/willianrod/ODeck/blob/main/README.md">English</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README-pt.md">Português</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md">Español</a></p>
 </div>
 
 ---
