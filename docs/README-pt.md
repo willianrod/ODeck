@@ -11,7 +11,7 @@
 
 ODeck é uma ferramenta versátil e poderosa projetada para aprimorar suas transmissões ao vivo e aumentar a produtividade. Além de atender a streamers de todos os níveis, o ODeck estende sua funcionalidade além das transmissões, permitindo que seja adaptado para várias tarefas de produtividade. Inspirado na ideia de código aberto, o "O" em ODeck destaca seu compromisso com a transparência e personalização. Dê um novo propósito ao seu antigo smartphone negligenciado, transformando-o em uma ferramenta valiosa.
 
-## Pilha de Tecnologia
+## Tecnologias
 
 - Electron
 - React
