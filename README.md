@@ -1,110 +1,108 @@
-![image](https://user-images.githubusercontent.com/6539258/154814361-066e5010-40a8-4820-a706-ed9803a319a1.png)
-
 <div align="center">
-⚠️ THIS SOFTWARE IS STILL IN ALPHA AND MAY CONTAIN BUGS ⚠️
+  <img src="https://github.com/willianrod/ODeck/assets/6539258/058efe7e-6f92-4ae9-a1a6-a743722f0ea6" width="167px">
+  <br/>
+  <p>Elevate Your Streaming Experience with ODeck: The Open Source Alternative to StreamDeck</p>
+  <p>Read this README in other languages: <a href="https://github.com/willianrod/ODeck/blob/main/README.md">English</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README-pt.md">Português</a>, <a href="https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md">Español</a></p>
 </div>
 
-# For Users
+---
 
-ODeck is a free and open source alternative to StreamDeck made with React, React Native, Electron, Socket.IO and some other tecnologies. It allows you to easily control some features of your computer with the power of a tap on your smartphone.
+## About
 
-It tends to be a cheaper alternative to StreamDeck because you can use your current smartphone or clean the dust from an older device from the bottom of your drawer and give another pourpose of life to this device.
+ODeck is a versatile and powerful tool designed to enhance your live streams and boost productivity. Beyond catering to streamers of all levels, ODeck extends its functionality beyond streaming, allowing it to be adapted for various productivity tasks. Inspired by the idea of open-source, the "O" in ODeck underscores its commitment to transparency and customization. Give new purpose to your old, neglected smartphone by transforming it into a valuable tool.
 
-## The readme also available in:
+## Technology Stack
 
-- [Español](https://github.com/willianrod/ODeck/blob/main/docs/README_ESP.md)
-- [English](https://github.com/willianrod/ODeck/blob/main/README.md)
-- Português
+- Electron
+- React
+- React Native
+- Socket.io
 
-## Suported OS
+## Platforms
 
-Currently ODeck is not yet supported on all platforms, but it should be in the near future. See the listing of the current OS suported.
+ODeck is available on the following platforms:
 
-### Deck
-
-- Android
-
-### Admin Dashboard
+### Supported Platforms:
 
 - Windows
+- Mac
 
-## Current Features
+### Mobile App:
 
-- Open an URL
-- Emit a combination of keys to invoke hotkeys
-- Run an EXE file
-- Media keys to interact with media playing on your system
-- Create multiple pages
-- Play any sound when pressing a button
-- Navigate between pages
-- Pair app with QR Code
+- [Android](https://play.google.com/store/apps/details?id=com.willianrod.odeck)
+- [iOS](https://apps.apple.com/br/app/odeck/id6463042332)
 
-## Upcoming features
+## Unlimited Customization
 
-- OBS integration
-- Image upload input
-- Prevent broken layout with custom key amount
-- Twitch integration
-- Add Linux and mac support for Admin Dashboard
-- Add iOS support for the ODeck App
+ODeck offers a high degree of customization to meet your unique needs. Create custom devices with different key layouts, enabling precise control over your actions. Customize each key individually in the following ways:
 
-### Deck preview
-https://github.com/willianrod/ODeck/assets/6539258/9c58dbb1-38f6-4602-b211-aecbfc8e4dff
+- Change the background color
+- Adjust the label text color
+- Add background images to labels
+- Hide labels to display only background images
 
-### Admin dashboard preview
-https://github.com/willianrod/ODeck/assets/6539258/51710202-d665-4f8c-bd7c-17c470e8e29b
+## How to Use
 
-## Docs
+1. Download ODeck on your computer from the [releases page](https://github.com/willianrod/ODeck/releases), where all updates will be made available.
+2. Install ODeck on your mobile device.
+3. On your computer, create a new device, give it a name, and set the amount of keys vertically and horizontally.
+4. Once created, click 'Select' to access the device customization screen and, in the upper left corner, click 'Pair Deck'.
+5. A pop-up will appear; if necessary, select your computer's IP address.
+6. Open the app on your mobile device and scan the QR code displayed on your computer.
+7. Now you can customize your deck to suit your needs.
 
-### Deck
+## Features
 
-#### Navigate
+ODeck has undergone extensive refinement, making it easy to add new features with minimal effort. Below is a list of the currently supported features:
 
-This action allows you to navigate between the deck pages
+<details>
+<summary><strong>Deck</strong></summary>
 
-#### Go Back
+- **Navigate:** Allows you to select and navigate between the app's pages.
+![Navigate](https://github.com/willianrod/ODeck/assets/6539258/4845e312-ce23-4415-ab96-4d61cf7ad771)
 
-This action allows you to go to the previows page shown
+- **Back:** Allows you to return to previously accessed pages.
+![Back](https://github.com/willianrod/ODeck/assets/6539258/54a6e405-f88e-4f9b-93c0-7f4aa87981e6)
+</details>
 
-### System
+<details>
+<summary><strong>System</strong></summary>
 
-#### Run executable
+- **Run Application:** Execute executable files on your computer.
+![Run Application](https://github.com/willianrod/ODeck/assets/6539258/ea0d6ec5-b93a-4998-a8a4-ff066ede016c)
 
-This action when pressed, opens an especified EXE file. To use it, you must put the complete path of the desired .exe file direct into the "Path" input. (In the near future there will be a button where you will navigate to find your desired file)
+- **Shortcut:** Record key combinations as shortcuts.
+![Shortcut](https://github.com/willianrod/ODeck/assets/6539258/6ba7d8cb-830b-446c-a82f-a75c390d401a)
 
-![image](https://user-images.githubusercontent.com/6539258/154814786-f08d6a64-04b2-4bfc-833f-6d68076fdf55.png)
+- **Play Sound:** Play .mp3 or .wav music files.
+![Play Sound](https://github.com/willianrod/ODeck/assets/6539258/a09bbf76-f6e6-4413-9ad5-961c2e96eaab)
 
-#### Hotkey
+- **URL:** Open URLs with a single click.
+![URL](https://github.com/willianrod/ODeck/assets/6539258/ff70d8e4-acc0-43a5-a924-5c1578610963)
+</details>
 
-With this action you will be able to invoke any hotkeys in your machine. It simulate the press of multiple keys in your machine, just like a normal keyboard but with just on touch of your finger.
+<details>
+<summary><strong>Media</strong></summary>
 
-By now you need to check this documentation here to see all available keys you can use (http://robotjs.io/docs/syntax#keyboard). The most common keys is listed bellow.
+Control media playback on your computer with the following options:
 
-- shift
-- control
-- alt
-- tab
-- right_shift
-- space
-- Numbers and letters are represented by their own values. (a-z,0-9)
+- Play
+- Pause
+- Stop
+- Previous
+- Next
+- Decrease Volume
+- Increase Volume
+- Mute
 
-For example, if you want to simulate the press of this combination of keys (CTRL + ALT + SHIFT + 1) you will need to replace the key with their value shown on the documentation and separete them with a comma.
+![Media](https://github.com/willianrod/ODeck/assets/6539258/b4614ccb-62ef-4ee8-b17c-b389742cbb12)
+</details>
 
-`control,shift,alt,1`
+# Contributing
 
-![image](https://user-images.githubusercontent.com/6539258/154814990-24aa87ed-6bb4-4cd1-8836-c7ade215749b.png)
+## Installation
 
-Obs: In the near future will be an input to record all keys your key pressed and use this recored keys as value.
-
-### Media
-
-This sections is self explanatory. When pressed, it will invoke the button action.
-
-# For Contributors
-
-## Install
-
-Clone the repo and install dependencies:
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/willianrod/ODeck.git ODeck
@@ -114,7 +112,7 @@ yarn install
 
 ## Starting Development
 
-Start the app in the `dev` environment:
+Launch the application in the development environment:
 
 ```bash
 yarn start
@@ -122,7 +120,7 @@ yarn start
 
 ## Packaging for Production
 
-To package apps for the local platform:
+Package the application for your local platform:
 
 ```bash
 yarn package
@@ -134,6 +132,6 @@ yarn package
 
 ## License
 
-Credits to [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) for making an awesome template for creating electron based React application.
+Special thanks to [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) for providing an excellent template for creating Electron-based React applications.
 
 MIT © [ODeck](https://github.com/WillianRod/ODeck)
