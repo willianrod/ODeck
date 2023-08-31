@@ -60,11 +60,39 @@ jobs:
           name: ODeck-MacOS
           path: release/build/ODeck*.dmg
 
+  release-linux:
+    if: ${{ github.repository_owner == 'willianrod' }}
+    name: Release for Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate Package
+        run: yarn package
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ODeck-Linux
+          path: release/build/ODeck*.AppImage
+
   tagged-release:
     if: ${{ github.repository_owner == 'willianrod' }}
     needs:
       - release-windows
       - release-macos
+      - release-linux
     name: Release ODeck
     runs-on: 'ubuntu-latest'
 
@@ -79,6 +107,11 @@ jobs:
         with:
           name: ODeck-MacOS
 
+      - name: Download Linux Release
+        uses: actions/download-artifact@v3
+        with:
+          name: ODeck-Linux
+
       - name: Create the GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -87,3 +120,4 @@ jobs:
           files: |
             *.dmg
             *.exe
+            *.AppImage
