@@ -109,25 +109,23 @@ const Key: React.FC<IKey> = ({ button }) => {
   drag(drop(ref));
 
   return (
-    <>
-      <div
-        ref={ref}
-        style={buttonStyle}
-        onClick={handleSelectKey}
-        role="button"
-        tabIndex={-1}
-      >
-        <img
-          src={overlay}
-          alt="overlay"
-          draggable={false}
-          className={styles.buttonOverlay}
-        />
-        {!buttonKey?.hideLabel && (
-          <span className={styles.buttonLabel}>{buttonKey?.label}</span>
-        )}
-      </div>
-    </>
+    <div
+      ref={ref}
+      style={buttonStyle}
+      onClick={handleSelectKey}
+      role="button"
+      tabIndex={-1}
+    >
+      <img
+        src={overlay}
+        alt="overlay"
+        draggable={false}
+        className={styles.buttonOverlay}
+      />
+      {!buttonKey?.hideLabel && (
+        <span className={styles.buttonLabel}>{buttonKey?.label}</span>
+      )}
+    </div>
   );
 };
 
