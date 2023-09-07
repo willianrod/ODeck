@@ -1,9 +1,9 @@
 import { HandlerItem, IButton, IButtonKey } from 'interfaces';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import ItemTypes from 'renderer/constants/item-types.constants';
-import { createKey, deleteKey, setCurrentKey, updateKey } from 'renderer/redux/ducks/keys';
+import { setCurrentKey, updateKey } from 'renderer/redux/ducks/keys';
 
 import overlay from '../../public/button-overlay.png';
 import styles from './key.module.scss';
