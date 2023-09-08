@@ -1,4 +1,4 @@
-import { HandlerItem, IButton, IButtonKey } from 'interfaces';
+import { IButton, IButtonKey } from 'interfaces';
 import React, { useCallback, useMemo, useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { useSelector, useDispatch } from 'react-redux';
@@ -43,14 +43,14 @@ const Key: React.FC<IKey> = ({ button }) => {
     [keys, button]
   );
 
-  const [{ isDragging }, drag] = useDrag(
+  const [, drag] = useDrag(
     () => ({
       type: ItemTypes.KEY,
       item: buttonKey,
       canDrag: () => {
         return !!buttonKey;
       },
-      end: (dropedItem: HandlerItem, monitor) => {
+      end: (_, monitor) => {
         const dropResult = monitor.getDropResult() as any;
 
         if (!dropResult) {
@@ -58,7 +58,9 @@ const Key: React.FC<IKey> = ({ button }) => {
         }
 
         const newPosition = dropResult?.button?.id;
-        const exists = keys?.find((key: IButtonKey) => newPosition === key.position);
+        const exists = keys?.find(
+          (key: IButtonKey) => newPosition === key.position
+        );
         if (exists) {
           return;
         }
@@ -79,7 +81,8 @@ const Key: React.FC<IKey> = ({ button }) => {
 
   const buttonStyle = useMemo<React.HTMLAttributes<HTMLDivElement>>(
     () => ({
-      backgroundColor: buttonKey?.backgroundColor || 'var(--chakra-colors-chakra-body-bg)',
+      backgroundColor:
+        buttonKey?.backgroundColor || 'var(--chakra-colors-chakra-body-bg)',
       color: buttonKey?.color,
       width: 70,
       height: 70,
