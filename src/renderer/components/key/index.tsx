@@ -71,10 +71,6 @@ const Key: React.FC<IKey> = ({ button }) => {
         };
         dispatch(updateKey(newKey));
       },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-        handlerId: monitor.getHandlerId(),
-      }),
     }),
     [dispatch, buttonKey]
   );
