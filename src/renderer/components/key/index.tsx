@@ -78,7 +78,9 @@ const Key: React.FC<IKey> = ({ button }) => {
   const buttonStyle = useMemo<React.HTMLAttributes<HTMLDivElement>>(
     () => ({
       backgroundColor:
-        buttonKey?.backgroundColor || 'var(--chakra-colors-chakra-body-bg)',
+        buttonKey?.backgroundColor !== 'transparent'
+          ? buttonKey?.backgroundColor
+          : 'var(--chakra-colors-chakra-body-bg)',
       color: buttonKey?.color,
       width: 70,
       height: 70,
