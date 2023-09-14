@@ -108,31 +108,52 @@ const createWindow = async () => {
     mainWindow = null;
   });
 
-  mainWindow.on('close', async (event) => {
-    event.preventDefault();
+  const optionPersistence = {
+    choicePersistence: false,
+    optionPersistence: 0,
+  };
+
+  function handlerOptionsPersistence(choice: boolean, response: number) {
+    if (choice) {
+      optionPersistence.choicePersistence = choice;
+      optionPersistence.optionPersistence = response;
+    }
+    if (response === 1) mainWindow?.hide();
+    if (response === 2) mainWindow?.destroy();
+  }
+
+  async function displayWindowCloseQuestion() {
     const options = {
       type: 'question',
       buttons: ['Cancel', 'Sim, por favor', 'Não, Obrigado'],
       defaultId: 1,
-      title: 'Question',
+      title: 'Pergunta',
       message: 'Atenção!',
       detail: 'Deseja ocultar o app sempre que apertar no botão fechar?',
       checkboxLabel: 'Lembre-se dessa responsta',
       checkboxChecked: false,
+      dialog: 1,
     };
-    const response = await dialog.showMessageBox(options);
-    if (response.response === 1) {
-      mainWindow?.hide();
-    }
-    if (response.response === 2) {
-      console.log('entrando no if 2');
-      mainWindow?.destroy();
-    }
+    const { checkboxChecked, response } = await dialog.showMessageBox(options);
+    handlerOptionsPersistence(checkboxChecked, response);
+  }
+
+  mainWindow.on('close', async (event) => {
+    event.preventDefault();
+    if (!optionPersistence.choicePersistence) displayWindowCloseQuestion();
+    else handlerOptionsPersistence(false, optionPersistence.optionPersistence);
   });
 
   tray = new Tray('assets/icon.ico');
   tray.setToolTip('ODeck');
   const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Abrir ODeck',
+      type: 'normal',
+      click: () => {
+        mainWindow?.show();
+      },
+    },
     {
       label: 'Fechar ODeck',
       type: 'normal',
@@ -143,7 +164,7 @@ const createWindow = async () => {
   ]);
   tray.setContextMenu(contextMenu);
 
-  tray.on('click', () => {
+  tray.on('double-click', () => {
     mainWindow?.show();
   });
 
