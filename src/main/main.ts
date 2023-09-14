@@ -66,6 +66,8 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
+let tray = null;
+
 const createWindow = async () => {
   if (isDevelopment) {
     await installExtensions();
@@ -126,6 +128,23 @@ const createWindow = async () => {
       console.log('entrando no if 2');
       mainWindow?.destroy();
     }
+  });
+
+  tray = new Tray('assets/icon.ico');
+  tray.setToolTip('ODeck');
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Fechar ODeck',
+      type: 'normal',
+      click: () => {
+        mainWindow?.destroy();
+      },
+    },
+  ]);
+  tray.setContextMenu(contextMenu);
+
+  tray.on('click', () => {
+    mainWindow?.show();
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
