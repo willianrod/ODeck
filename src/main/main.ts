@@ -11,7 +11,15 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  shell,
+  ipcMain,
+  Tray,
+  dialog,
+  Menu,
+} from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -96,6 +104,28 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+  });
+
+  mainWindow.on('close', async (event) => {
+    event.preventDefault();
+    const options = {
+      type: 'question',
+      buttons: ['Cancel', 'Sim, por favor', 'Não, Obrigado'],
+      defaultId: 1,
+      title: 'Question',
+      message: 'Atenção!',
+      detail: 'Deseja ocultar o app sempre que apertar no botão fechar?',
+      checkboxLabel: 'Lembre-se dessa responsta',
+      checkboxChecked: false,
+    };
+    const response = await dialog.showMessageBox(options);
+    if (response.response === 1) {
+      mainWindow?.hide();
+    }
+    if (response.response === 2) {
+      console.log('entrando no if 2');
+      mainWindow?.destroy();
+    }
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
