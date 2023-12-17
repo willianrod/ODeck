@@ -1,0 +1,79 @@
+{
+  "handlers": {
+    "active": "Activado",
+    "executable": {
+      "title": "Ejecutable"
+    },
+    "hotkey": { "title": "Atajo de teclado" },
+    "media": { "title": "Media" },
+    "navigation": { "title": "Navegación" },
+    "sound": { "title": "Sonido" },
+    "url": { "title": "URL" }
+  },
+  "group": {
+    "media": "Media",
+    "deck": "Deck",
+    "system": "Sistema"
+  },
+  "hotkey": {
+    "title": "Atajo de teclado",
+    "description": "Simula una combinación de teclas para invocar un atajo de teclado.",
+    "label": "Atajo de teclado",
+    "input": {
+      "label_1": "Combinación",
+      "description_1": "Haz click en 'Empezar a grabar' y presiona la combinación de teclas que quieras lanzar cuando esta tecla sea presionada."
+    }
+  },
+  "navigate": {
+    "title": "Navegar",
+    "description": "Navegar a otra página.",
+    "label": "Ir a...",
+    "input": {
+      "label_1": "Página",
+      "description_1": "Selecciona la página a la que quieras navegar."
+    }
+  },
+  "go_back": {
+    "title": "Ir atrás",
+    "description": "Volver a la página previa.",
+    "label": "Ir atrás"
+  },
+  "url": {
+    "title": "URL",
+    "description": "Abrir una URL en tu navegador por defecto.",
+    "label": "Abrir enlace",
+    "input": {
+      "label_1": "URL",
+      "description_1": "Introduce la URL que quieras abrir cuando este botón sea presionado."
+    }
+  },
+  "media": {
+    "media": "Media",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "stop": "Parar",
+    "mute": "Silenciar",
+    "volume_plus": "Volumen+",
+    "volume_minus": "Volumen-"
+  },
+  "executable": {
+    "title": "Iniciar ejecutable",
+    "description": "Abrir una aplicación instalada en tu PC.",
+    "label": "Abrir aplicación",
+    "input": {
+      "label_1": "Ejecutable",
+      "description_1": "Selecciona el fichero ejecutable que quieras iniciar cuando se presione este botón."
+    }
+  },
+  "sound": {
+    "title": "Reproducir sonido",
+    "label": "Reproducir sonido",
+    "description": "Permite reproducir un fichero .mp3 o .wav cada vez que este botón sea presionado.",
+    "input": {
+      "label_1": "Sonido",
+      "description_1": "Selecciona el archivo que quieras que se reproduzca cada vez que este botón sea presionado."
+    }
+  }
+}

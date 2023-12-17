@@ -1,0 +1,11 @@
+{
+  "create_device": "Crear un dispositivo",
+  "create_new_device": "Crear un dispositivo nuevo",
+  "label": {
+    "name": "Nombre",
+    "amount_vertically": "Cantidad de teclas verticales",
+    "amount_horizontally": "Cantidad de teclas horizontales"
+  },
+  "cancel": "Cancelar",
+  "create": "Crear"
+}
