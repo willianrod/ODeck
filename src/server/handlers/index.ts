@@ -10,6 +10,7 @@ import MediaHandler, { config as mediaConfig } from './media';
 import NavigationHandler, { config as navigationConfig } from './navigation';
 import SoundHandler, { config as soundConfig } from './sound';
 import UrlHandler, { config as urlConfig } from './url';
+import CommandHandler, { config as commandConfig } from './command';
 
 interface HandlerConstructor {
   new ({
@@ -30,6 +31,7 @@ const HANDLERS: [HandlerConstructor, HandlerConfig][] = [
   [NavigationHandler, navigationConfig],
   [SoundHandler, soundConfig],
   [UrlHandler, urlConfig],
+  [CommandHandler, commandConfig],
 ];
 
 const handlersDb = new Handlers();

@@ -8,7 +8,8 @@
     "media": { "title": "Media" },
     "navigation": { "title": "Navigation" },
     "sound": { "title": "Sound" },
-    "url": { "title": "URL" }
+    "url": { "title": "URL" },
+    "command": { "title": "Command" }
   },
   "group": {
     "media": "Media",
@@ -74,6 +75,15 @@
     "input": {
       "label_1": "Sound",
       "description_1": "Select the file you want to play when you press the button."
+    }
+  },
+  "command": {
+    "title": "Run a command",
+    "description": "Run a command from your shell.",
+    "label": "Command to run",
+    "input": {
+      "label_1": "Command",
+      "description_1": "Enter the command you want to execute when the button is pressed."
     }
   }
 }
