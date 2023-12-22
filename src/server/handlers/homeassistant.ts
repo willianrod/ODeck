@@ -83,17 +83,20 @@ export default class HomeAssistantHandler extends Handler {
   }
 
   onKeyPress({ keyPressed, socket }: KeyPressEvent) {
-    if (!keyPressed.actionConfig.haEntityID || !keyPressed.actionConfig.haDomain || !keyPressed.actionConfig.haService) return;
-
     const haConfig = HandlersController(socket, this.io).getPublicHandlersData([config]);
-    if (!haConfig) return;
-    const haToken = this.getHAToken(haConfig);
-    const haIP = this.getHAIP(haConfig);
+    if (!keyPressed.actionConfig.haEntityID || !keyPressed.actionConfig.haDomain || !keyPressed.actionConfig.haService || !haConfig) return;
+
+    const haPetition = {
+      token: this.getHAToken(haConfig),
+      ip: this.getHAIP(haConfig),
+      domain: keyPressed.actionConfig.haDomain,
+      service: keyPressed.actionConfig.haService,
+      entityID: keyPressed.actionConfig.haEntityID
+    };
 
     switch (keyPressed.type) {
       case KeyTypes.HOME_ASSISTANT_CALL_SERVICE:
-        this.callHomeAssistantService(haIP, keyPressed.actionConfig.haDomain,
-          keyPressed.actionConfig.haService, keyPressed.actionConfig.haEntityID, haToken);
+        this.callHomeAssistantService(haPetition);
         break;
 
       default:
@@ -109,22 +112,22 @@ export default class HomeAssistantHandler extends Handler {
     return haConfig["home_assistant"].home_assistant_ip;
   }
 
-  callHomeAssistantService(ip: string, domain: string, service: string, entityID: string, token: string) {
-    axios.post(`${ip}/api/services/${domain}/${service}`,
+  callHomeAssistantService(haPetition: any) {
+    axios.post(`${haPetition.ip}/api/services/${haPetition.domain}/${haPetition.service}`,
       {
-        "entity_id": `${entityID}`
+        "entity_id": `${haPetition.entityID}`
       },
       {
         headers: {
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${haPetition.token}`,
           "Content-Type": "application/json"
         }
       })
       .then(() => {
-        console.log(`Service "${ service }" in domain "${ domain }" called succesfuly`);
+        console.log(`Service "${haPetition.service}" in domain "${haPetition.domain}" called succesfuly`);
       })
       .catch((error) => {
-        console.error(`Something went wrong calling "${ service }" in domain "${ domain }":`, error.code, error.message);
+        console.error(`Something went wrong calling "${haPetition.service}" in domain "${haPetition.domain}":`, error.code, error.message);
       });
   }
 }
