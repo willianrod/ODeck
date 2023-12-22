@@ -8,12 +8,14 @@
     "media": { "title": "Media" },
     "navigation": { "title": "Navigation" },
     "sound": { "title": "Sound" },
-    "url": { "title": "URL" }
+    "url": { "title": "URL" },
+    "home_assistant": { "title": "Home Assistant" }
   },
   "group": {
     "media": "Media",
     "deck": "Deck",
-    "system": "System"
+    "system": "System",
+    "home_assistant": "Home Assistant"
   },
   "hotkey": {
     "title": "Hotkey",
@@ -74,6 +76,35 @@
     "input": {
       "label_1": "Sound",
       "description_1": "Select the file you want to play when you press the button."
+    }
+  },
+  "home_assistant": {
+    "config": {
+      "token": {
+        "label": "HA Token",
+        "description": "Token used to access your Home Assistant installation, you must generate it there and paste here"
+      },
+      "ip": {
+        "label": "HA address",
+        "description": "The access address to your Home Assistant, you must activate first the API Rest, check the HA docs for more information"
+      }
+    },
+    "call_service": {
+      "title": "Call service",
+      "label": "Call HA service",
+      "description": "Call service from your HA instalation.",
+      "domain": {
+        "label": "Domain",
+        "description": "The name of the domain to use. (switch, light, ...)"
+      },
+      "service": {
+        "label": "Service",
+        "description": "The service that will be executed in the service. (turn_on, turn_off, ...)"
+      },
+      "entityid": {
+        "label": "Entity ID",
+        "description": "The ID of the entity."
+      }
     }
   }
 }

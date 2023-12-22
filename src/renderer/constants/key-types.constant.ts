@@ -200,6 +200,23 @@ const KEY_TYPES: Array<IKeyType> = [
       },
     ],
   },
+  {
+    key: 'HOME_ASSISTANT',
+    label: i18n.t('keys:home_assistant'),
+    icon: MdSettings,
+    items: [
+      {
+        type: KeyTypes.HOME_ASSISTANT_CALL_SERVICE,
+        label: i18n.t('keys:home_assistant_call_service.title'),
+        description: i18n.t('keys:home_assistant_call_service.description'),
+        icon: MdMonitor,
+        defaults: {
+          color: '#fff',
+          label: i18n.t('keys:home_assistant_call_service.label'),
+        },
+      },
+    ],
+  },
 ];
 
 export default KEY_TYPES;
