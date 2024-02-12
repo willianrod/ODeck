@@ -32,7 +32,7 @@ export const config: HandlerConfig = {
         defaultValue: '',
         props: {
           maxLength: 500,
-          accept: '.exe',
+          accept: 'application/*',
         },
       },
     ],
