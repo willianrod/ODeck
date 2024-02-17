@@ -1,9 +1,9 @@
 import { IButton, IButtonKey } from 'interfaces';
-import React, { useCallback, useMemo } from 'react';
-import { useDrop } from 'react-dnd';
+import React, { useCallback, useMemo, useRef } from 'react';
+import { useDrag, useDrop } from 'react-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import ItemTypes from 'renderer/constants/item-types.constants';
-import { setCurrentKey } from 'renderer/redux/ducks/keys';
+import { setCurrentKey, updateKey } from 'renderer/redux/ducks/keys';
 
 import overlay from '../../public/button-overlay.png';
 import styles from './key.module.scss';
@@ -18,6 +18,8 @@ const Key: React.FC<IKey> = ({ button }) => {
     currentKey: state.keys.currentKey,
     currentPage: state.pages.currentPage,
   }));
+
+  const ref = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
 
@@ -41,9 +43,44 @@ const Key: React.FC<IKey> = ({ button }) => {
     [keys, button]
   );
 
+  const [, drag] = useDrag(
+    () => ({
+      type: ItemTypes.KEY,
+      item: buttonKey,
+      canDrag: () => {
+        return !!buttonKey;
+      },
+      end: (_, monitor) => {
+        const dropResult = monitor.getDropResult() as any;
+
+        if (!dropResult) {
+          return;
+        }
+
+        const newPosition = dropResult?.button?.id;
+        const exists = keys?.find(
+          (key: IButtonKey) => newPosition === key.position
+        );
+        if (exists) {
+          return;
+        }
+
+        const newKey = {
+          ...buttonKey,
+          position: newPosition,
+        };
+        dispatch(updateKey(newKey));
+      },
+    }),
+    [dispatch, buttonKey]
+  );
+
   const buttonStyle = useMemo<React.HTMLAttributes<HTMLDivElement>>(
     () => ({
-      backgroundColor: buttonKey?.backgroundColor,
+      backgroundColor:
+        buttonKey?.backgroundColor !== 'transparent'
+          ? buttonKey?.backgroundColor
+          : 'var(--chakra-colors-chakra-body-bg)',
       color: buttonKey?.color,
       width: 70,
       height: 70,
@@ -70,9 +107,11 @@ const Key: React.FC<IKey> = ({ button }) => {
     dispatch(setCurrentKey(buttonKey));
   }, [dispatch, buttonKey]);
 
+  drag(drop(ref));
+
   return (
     <div
-      ref={drop}
+      ref={ref}
       style={buttonStyle}
       onClick={handleSelectKey}
       role="button"

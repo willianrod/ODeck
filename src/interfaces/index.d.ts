@@ -9,6 +9,9 @@ interface IActionConfig {
   soundPath?: string;
   pageId?: string;
   command?: string;
+  haEntityID?: string;
+  haService?: string;
+  haDomain?: string;
 }
 
 interface IButtonKey {

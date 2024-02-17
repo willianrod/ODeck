@@ -11,6 +11,7 @@ import NavigationHandler, { config as navigationConfig } from './navigation';
 import SoundHandler, { config as soundConfig } from './sound';
 import UrlHandler, { config as urlConfig } from './url';
 import CommandHandler, { config as commandConfig } from './command';
+import HomeAssistantHandler, { config as homeassistantConfig } from "./homeassistant";
 
 interface HandlerConstructor {
   new ({
@@ -32,6 +33,7 @@ const HANDLERS: [HandlerConstructor, HandlerConfig][] = [
   [SoundHandler, soundConfig],
   [UrlHandler, urlConfig],
   [CommandHandler, commandConfig],
+  [HomeAssistantHandler, homeassistantConfig],
 ];
 
 const handlersDb = new Handlers();
