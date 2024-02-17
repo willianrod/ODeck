@@ -21,7 +21,7 @@ const KeyPad = () => {
   );
 
   return (
-    <Box overflow="auto" height="100%">
+    <Box overflow="auto" height="100%" bgColor="chakra-body-bg">
       <Flex
         justifyContent="center"
         alignItems="center"
@@ -35,6 +35,7 @@ const KeyPad = () => {
           gridTemplateRows={`repeat(${device.amountVertical}, minmax(${KEY_SIZE_IN_PIXELS}px, 1fr))`}
           userSelect="none"
           height="fit-content"
+          bgColor="chakra-body-bg"
         >
           {buttons.map((button) => {
             return <Key key={button.id} button={button} />;
