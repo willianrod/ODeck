@@ -9,7 +9,7 @@
     "navigation": { "title": "Navigation" },
     "sound": { "title": "Sound" },
     "url": { "title": "URL" },
-    "command": { "title": "Command" }
+    "command": { "title": "Command" },
     "home_assistant": { "title": "Home Assistant" }
   },
   "group": {
