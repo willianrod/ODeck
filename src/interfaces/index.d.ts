@@ -8,6 +8,9 @@ interface IActionConfig {
   exePath?: string;
   soundPath?: string;
   pageId?: string;
+  haEntityID?: string;
+  haService?: string;
+  haDomain?: string;
 }
 
 interface IButtonKey {

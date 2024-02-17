@@ -13,6 +13,7 @@ enum KeyTypes {
   NEXT = 'next',
   NAVIGATE = 'navigate',
   GO_BACK = 'go_back',
+  HOME_ASSISTANT_CALL_SERVICE = 'home_assistant_call_service',
 }
 
 export default KeyTypes;
