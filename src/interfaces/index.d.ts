@@ -8,6 +8,7 @@ interface IActionConfig {
   exePath?: string;
   soundPath?: string;
   pageId?: string;
+  command?: string;
   haEntityID?: string;
   haService?: string;
   haDomain?: string;

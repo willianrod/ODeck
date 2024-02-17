@@ -13,6 +13,7 @@ enum KeyTypes {
   NEXT = 'next',
   NAVIGATE = 'navigate',
   GO_BACK = 'go_back',
+  COMMAND = 'command',
   HOME_ASSISTANT_CALL_SERVICE = 'home_assistant_call_service',
 }
 

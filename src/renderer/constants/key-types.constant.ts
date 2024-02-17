@@ -95,6 +95,16 @@ const KEY_TYPES: Array<IKeyType> = [
           label: i18n.t('keys:play_sound.label'),
         },
       },
+      {
+        type: KeyTypes.COMMAND,
+        label: i18n.t('keys:command.title'),
+        description: i18n.t('keys:command.description'),
+        icon: MdMonitor,
+        defaults: {
+          color: '#fff',
+          label: i18n.t('keys:command.label'),
+        },
+      },
     ],
   },
   {
