@@ -11,7 +11,15 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  shell,
+  ipcMain,
+  Tray,
+  dialog,
+  Menu,
+} from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -58,6 +66,8 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
+let tray = null;
+
 const createWindow = async () => {
   if (isDevelopment) {
     await installExtensions();
@@ -96,6 +106,66 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+  });
+
+  const optionPersistence = {
+    choicePersistence: false,
+    optionPersistence: 0,
+  };
+
+  function handlerOptionsPersistence(choice: boolean, response: number) {
+    if (choice) {
+      optionPersistence.choicePersistence = choice;
+      optionPersistence.optionPersistence = response;
+    }
+    if (response === 1) mainWindow?.hide();
+    if (response === 2) mainWindow?.destroy();
+  }
+
+  async function displayWindowCloseQuestion() {
+    const options = {
+      type: 'question',
+      buttons: ['Cancel', 'Sim, por favor', 'Não, Obrigado'],
+      defaultId: 1,
+      title: 'Pergunta',
+      message: 'Atenção!',
+      detail: 'Deseja ocultar o app sempre que apertar no botão fechar?',
+      checkboxLabel: 'Lembre-se dessa responsta',
+      checkboxChecked: false,
+      dialog: 1,
+    };
+    const { checkboxChecked, response } = await dialog.showMessageBox(options);
+    handlerOptionsPersistence(checkboxChecked, response);
+  }
+
+  mainWindow.on('close', async (event) => {
+    event.preventDefault();
+    if (!optionPersistence.choicePersistence) displayWindowCloseQuestion();
+    else handlerOptionsPersistence(false, optionPersistence.optionPersistence);
+  });
+
+  tray = new Tray('assets/icon.ico');
+  tray.setToolTip('ODeck');
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Abrir ODeck',
+      type: 'normal',
+      click: () => {
+        mainWindow?.show();
+      },
+    },
+    {
+      label: 'Fechar ODeck',
+      type: 'normal',
+      click: () => {
+        mainWindow?.destroy();
+      },
+    },
+  ]);
+  tray.setContextMenu(contextMenu);
+
+  tray.on('double-click', () => {
+    mainWindow?.show();
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
