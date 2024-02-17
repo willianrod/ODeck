@@ -1,0 +1,7 @@
+{
+  "delete":"Eliminar",
+  "description": "Esta acción no se puede deshacer.",
+  "title":"¿De verdad quieres eliminar este dispositivo?",
+  "cancel":"No",
+  "confirm":"Si"
+}

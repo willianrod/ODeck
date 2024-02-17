@@ -1,0 +1,14 @@
+{
+  "app_name": "ODeck",
+  "sidebar": {
+    "devices": "Dispositivos",
+    "plugins": "Extensiones",
+    "about": "Acerca de"
+  },
+  "select": "Seleccionar",
+  "select_device": "Seleccionar un dispositivo:",
+  "help": "Ayuda",
+  "documentation": "Documentación",
+  "community_discussions": "Discusiones en la comunidad",
+  "report_bug": "Reportar un error"
+}

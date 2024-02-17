@@ -1,0 +1,30 @@
+{
+  "label": {
+    "path": "Directorio",
+    "bindings": "Combinación",
+    "url": "URL",
+    "page": "Página",
+    "play_sound": "Reproducir sonido",
+    "label": "Etiqueta",
+    "background_color": "Color de fondo",
+    "background_url": "URL del fondo",
+    "text_color": "Color del texto",
+    "hide_label": "Ocultar etiqueta",
+    "remove": "Eliminar",
+    "save": "Guardar"
+  },
+  "hint": {
+    "url": "Introduce aquí la URL que quieres que se abra cuando se pulsa este botón."
+  },
+  "empty": {
+    "title": "No se ha seleccionado una tecla",
+    "description": "Arrastra una acción desde la barra lateral y suéltala en algún espacio libre para empezar a editar."
+  },
+  "bindings": {
+    "start_recording": "Empezar a grabar",
+    "stop_recording": "Parar de grabar"
+  },
+  "file_picker": {
+    "label": "Elegir archivo"
+  }
+}
